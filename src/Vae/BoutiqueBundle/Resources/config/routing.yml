@@ -1,0 +1,20 @@
+vae_boutique_detail:
+    pattern:  /{_locale}/{nomSite}/{slugRubrique}/{slugProduit}/
+    defaults: { _controller: VaeBoutiqueBundle:Produit:detail , _locale: fr}
+    requirements:
+        _locale:  fr|en
+vae_boutique_success:
+    pattern:  /paypal/success
+    defaults: { _controller: VaeBoutiqueBundle:Produit:success , langue: fr }
+    requirements:
+        langue:  fr|en
+vae_boutique_cancel:
+    pattern:  /paypal/cancel
+    defaults: { _controller: VaeBoutiqueBundle:Produit:cancel , langue: fr }
+    requirements:
+        langue:  fr|en
+vae_boutique_ipn:
+    pattern:  /paypal/ipn
+    defaults: { _controller: VaeBoutiqueBundle:Produit:ipn , langue: fr }
+    requirements:
+        langue:  fr|en

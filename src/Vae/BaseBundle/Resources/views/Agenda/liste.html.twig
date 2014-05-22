@@ -1,0 +1,18 @@
+    <h1>Agenda</h1>
+    <ul id="agenda">
+         {% for agenda in agendas %}
+            {% if langue == 'fr'%}
+                <li>
+                    <p>{{agenda.date|date('d/m/y')}}</p>
+                    <h3><a class="test" href="{{ path('vae_base_agenda_detail',{'nomSite' : site.nom, 'slugAgenda' : agenda.slug } )}}">{{agenda.titre}}</a></h3>
+             {% else %}
+                    <p>{{agenda.date|date('m/d/y')}}</p>
+                    <h3><a class="test" href="{{ path('vae_base_agenda_detail',{'nomSite' : site.nom, 'slugAgenda' : agenda.slugEn } )}}">{{agenda.titreEn}}</a></h3>
+                </li>
+             {% endif %}
+          {% endfor %}
+    </ul>
+
+
+
+

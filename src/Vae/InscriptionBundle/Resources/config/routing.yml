@@ -1,0 +1,5 @@
+vae_inscription_formation:
+    pattern:  /{langue}/{nomSite}/{slugRubrique}/{slugFormation}/inscription
+    defaults: { _controller: VaeInscriptionBundle:Inscription:liste , langue: fr }
+    requirements:
+        langue:  fr|en

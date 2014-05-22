@@ -1,0 +1,7 @@
+parameters:
+#    vae_multi_site.example.class: Vae\MultiSiteBundle\Example
+
+services:
+#    vae_multi_site.example:
+#        class: %vae_multi_site.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

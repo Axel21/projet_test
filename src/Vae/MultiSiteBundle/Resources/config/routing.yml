@@ -1,0 +1,6 @@
+vae_multi_site_accueil:
+   pattern:  /{_locale}
+   defaults: { _controller: VaeMultiSiteBundle:Site:index, _locale:fr }
+   requirements:
+     _local:  fr|en
+       

@@ -1,0 +1,7 @@
+parameters:
+#    vae_boutique.example.class: Vae\BoutiqueBundle\Example
+
+services:
+#    vae_boutique.example:
+#        class: %vae_boutique.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

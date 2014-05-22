@@ -1,0 +1,13 @@
+ <article>
+            {% if langue == 'fr'%}
+                    <h4>{{agenda.titre}}</h4>
+                    <p>{{agenda.contenu}}</p>
+                    <p>{{agenda.date|date('d/m/y')}}</p>
+                    <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : 'accueil' } )}}'>Retour</a></p>
+             {% else %}
+                    <h4>{{agenda.titreEn}}</h4>
+                    <p>{{agenda.contenuEn}}</p>
+                    <p>{{agenda.date|date('m/d/y')}}</p>
+                    <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : 'home' } )}}'>Back</a></p>
+             {% endif %}
+</article>

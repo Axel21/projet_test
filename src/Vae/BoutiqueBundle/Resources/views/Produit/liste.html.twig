@@ -1,0 +1,18 @@
+
+<ul id="listeProduit">
+         {% for produit in produits %}
+            {% if langue == 'fr'%}
+                <li>
+                    <h3><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}">{{produit.nom}}</a></h3>
+                    <p>{{produit.description}}</p>
+             {% else %}
+                    <h3><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}">{{produit.nomEn}}</a></h3>
+                    <p>{{produit.descriptionEn}}</p>
+             {% endif %}
+                    <p>image</p>
+                    <p>{{produit.prix}}</p>
+                    <p>{{produit.disponible}}</p>
+                </li>
+          {% endfor %}
+    </ul>
+

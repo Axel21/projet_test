@@ -1,0 +1,14 @@
+vae_base_rubrique_detail:
+    pattern:  /{_locale}/{nomSite}/{slugRubrique}
+    defaults: { _controller: VaeBaseBundle:Rubrique:detail , _locale: fr }
+    requirements:
+vae_base_formation_detail:
+    pattern:  /{_locale}/{nomSite}/{slugRubrique}/{slugFormation}
+    defaults: { _controller: VaeBaseBundle:Formation:detail , _locale: fr }
+    requirements:
+        _locale:  fr|en
+vae_base_agenda_detail:
+    pattern:  /{_locale}/{nomSite}/{slugAgenda}/
+    defaults: { _controller: VaeBaseBundle:Agenda:detail , _locale: fr }
+    requirements:
+        _locale:  fr|en

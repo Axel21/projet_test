@@ -1,0 +1,7 @@
+parameters:
+#    vae_inscription.example.class: Vae\InscriptionBundle\Example
+
+services:
+#    vae_inscription.example:
+#        class: %vae_inscription.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

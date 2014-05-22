@@ -1,0 +1,21 @@
+vae_user:
+    resource: "@VaeUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+vae_multi_site:
+    resource: "@VaeMultiSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+vae_base:
+    resource: "@VaeBaseBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+vae_boutique:
+    resource: "@VaeBoutiqueBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+vae_inscription:
+    resource: "@VaeInscriptionBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+

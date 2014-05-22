@@ -1,0 +1,20 @@
+<h1>Bienvenu sur le site de l'asbl avec le soleil</h1>
+
+ <div>
+    <a href="{{ path("vae_multi_site_accueil", { '_locale': 'fr'}) }}">Francais</a>
+    <a href="{{ path("vae_multi_site_accueil", { '_locale': 'en'}) }}">Anglais</a>   
+</div>
+
+<ul>
+    <li>
+        {% if langue == 'fr'%}
+        <a href='fr/alphabétisation/accueil'>Alphabétisation</a>
+        <a href='fr/eft/accueil'>EFT</a>
+        <a href='fr/ceramique/accueil'>Céramique</a>
+        {% else %}
+        <a href='en/alphabétisation/home'>Alphabétisation</a>
+        <a href='en/eft/home'>EFT</a>
+        <a href='en/ceramique/home'>Céramique</a>
+        {% endif %}    
+    </li>
+</ul>

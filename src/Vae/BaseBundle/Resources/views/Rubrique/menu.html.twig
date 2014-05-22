@@ -1,0 +1,14 @@
+
+    <ul id="menu">
+         {% for rubrique in rubriques %}
+            {% if langue == 'fr'%}
+                <li><a class="test" href="{{path('vae_base_rubrique_detail',{'nomSite': site.nom, 'slugRubrique': rubrique.slug})}}">{{rubrique.nom}}</a></li>
+             {% else %}
+                <li><a class="test" href="{{path('vae_base_rubrique_detail',{'nomSite': site.nom, 'slugRubrique': rubrique.slugEn})}}">{{rubrique.nomEn}}</a></li>
+             {% endif %}
+          {% endfor %}
+    </ul>
+
+
+
+
