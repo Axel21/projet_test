@@ -1,0 +1,45 @@
+admin_rubriques:
+    resource: "@VaeAdminBundle/Resources/config/routing/rubriques.yml"
+    prefix: /rubriques
+
+admin_liens:
+    resource: "@VaeAdminBundle/Resources/config/routing/liens.yml"
+    prefix: /liens
+
+admin_agendas:
+    resource: "@VaeAdminBundle/Resources/config/routing/agendas.yml"
+    prefix: /agendas
+
+admin_configs:
+    resource: "@VaeAdminBundle/Resources/config/routing/configs.yml"
+    prefix: /configs
+
+admin_contacts:
+    resource: "@VaeAdminBundle/Resources/config/routing/contacts.yml"
+    prefix: /contacts
+
+admin_formations:
+    resource: "@VaeAdminBundle/Resources/config/routing/formations.yml"
+    prefix: /formations
+
+admin_produits:
+    resource: "@VaeAdminBundle/Resources/config/routing/produits.yml"
+    prefix: /produits
+
+admin_users:
+    resource: "@VaeAdminBundle/Resources/config/routing/users.yml"
+    prefix: /users
+
+admin_achats:
+    resource: "@VaeAdminBundle/Resources/config/routing/achats.yml"
+    prefix: /achats
+
+admin_inscriptions:
+    resource: "@VaeAdminBundle/Resources/config/routing/inscriptions.yml"
+    prefix: /inscriptions
+
+
+# par default on affiche les rubriques
+admin_index:
+    resource: "@VaeAdminBundle/Resources/config/routing/rubriques.yml"
+    prefix: 

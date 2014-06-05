@@ -1,0 +1,10 @@
+{% extends 'VaeAdminBundle::index.html.twig' %}
+{% block bread %}Users{% endblock %}
+{% block title %}Users{% endblock %}
+{% block admin_title %}Users{% endblock %}
+
+{% block admin_table -%}
+  {{ render(controller("VaeAdminBundle:Users:limit", {"page": page })) }}
+{% endblock %}
+
+

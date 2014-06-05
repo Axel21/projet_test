@@ -1,0 +1,52 @@
+{% extends "::base.html.twig" %}
+{%block content%}
+<article>
+                                            
+    <div>
+        {% if langue == 'fr'%}
+            <h2><a class="test" href="#">{{produit.nom}}</a></h2>
+            <p>{{produit.description}}</p>      
+        {% else %}
+            <h2><a href="#">{{produit.nomEn}}</a></h2>
+            <p>{{produit.descriptionEn}}</p>
+        {% endif %}
+            <img src="{{ asset('uploads/images/'~produit.image) }}" />
+       
+            {% if langue == 'fr'%}
+            <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug } )}}'>Retour à la liste</a></p>
+            {% else %}
+            <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn } )}}'>Back to list</a></p>
+            {% endif %}
+    </div>
+        
+</article>
+{%endblock%}
+
+{#
+    Exemple 1 : detail de produit en vente
+    ----------------------------------------------
+
+    Nom du Bundle: VaeBoutiqueBundle
+    Controller: Produit
+    Action    : detail
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans un block
+        - ...
+
+    POUR LE LIENS:
+    Route: vae_boutique_detail
+           Paramètre: STRING : {'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug }
+                                                                               .slugEn                       .slugEn
+    VARIABLES DISPONIBLES:
+        - produit: ARRAY/OBJ : 
+                     propriétés : id, nom, nomEn, description, descriptionEn, disponible, prix, slug, slugEn, image
+        - langue
+        - site.nom
+        - rubrique.slug
+                  .slugEn
+    ----------------------------------------------                
+    POUR TESTER : app_dev.php/$_locale/céramique/boutique/slug produit
+    ----------------------------------------------
+#}

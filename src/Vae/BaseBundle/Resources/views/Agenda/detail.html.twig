@@ -1,4 +1,6 @@
- <article>
+{% extends "::base.html.twig" %}
+{%block content%}
+<article>
             {% if langue == 'fr'%}
                     <h4>{{agenda.titre}}</h4>
                     <p>{{agenda.contenu}}</p>
@@ -11,3 +13,33 @@
                     <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : 'home' } )}}'>Back</a></p>
              {% endif %}
 </article>
+{%endblock%}
+
+{#
+    Exemple 1 : detail d'un evenement de l'agenda, ...
+    ----------------------------------------------
+    DESCRIPTION :       
+    detail des evenements encodés dans l'agenda
+
+    Nom du Bundle: VaeBaseBundle
+    Controller: Agenda
+    Action    : detail
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans un block
+        - ...
+
+    POUR LE LIENS:
+    Route: vae_base_agenda_detail
+           Paramètre: STRING : {'nomSite' : site.nom, 'slugAgenda' : agenda.slug }
+                                                      'slugAgenda' : agenda.slugEn
+    VARIABLES DISPONIBLES:
+        - agenda: ARRAY/OBJ : 
+                     propriétés : id, titre, titreEn, contenu, contenuEn, date slug, slugEn
+        - langue
+        - site.nom            
+    ----------------------------------------------                
+    POUR TESTER : app_dev.php/$_locale/nom du site/slug agenda
+    ----------------------------------------------
+#}

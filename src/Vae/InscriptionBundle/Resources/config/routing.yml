@@ -1,5 +1,10 @@
-vae_inscription_formation:
-    pattern:  /{langue}/{nomSite}/{slugRubrique}/{slugFormation}/inscription
-    defaults: { _controller: VaeInscriptionBundle:Inscription:liste , langue: fr }
+vae_inscription_delete:
+    pattern:  /profile/delete/{id}
+    defaults: { _controller: VaeInscriptionBundle:Inscription:delete , _locale: fr }
     requirements:
-        langue:  fr|en
+        _locale:  fr|en
+vae_inscription_formation:
+    pattern:  /{_locale}/{nomSite}/{slugRubrique}/{slugFormation}/inscription
+    defaults: { _controller: VaeInscriptionBundle:Inscription:inscription , _locale: fr }
+    requirements:
+        _locale:  fr|en

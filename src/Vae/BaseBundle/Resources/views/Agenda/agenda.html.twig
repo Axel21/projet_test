@@ -1,0 +1,52 @@
+{% extends "::base.html.twig" %}
+{%block content%}
+<h1>Agenda</h1>
+    <ul id="agenda">
+         {% for agenda in agendas %}
+            {% if langue == 'fr'%}
+                <li>
+                    <h3><a class="test" href="{{ path('vae_base_agenda_detail',{'nomSite' : site.nom, 'slugAgenda' : agenda.slug } )}}">{{agenda.titre}}</a></h3>
+                    <p>{{agenda.contenu}}</p>
+                    <p>{{agenda.date|date('d/m/y')}}</p>
+             {% else %}
+                    <h3><a class="test" href="{{ path('vae_base_agenda_detail',{'nomSite' : site.nom, 'slugAgenda' : agenda.slugEn } )}}">{{agenda.titreEn}}</a></h3>
+                    <p>{{agenda.contenuEn}}</p>
+                    <p>{{agenda.date|date('m/d/y')}}</p>
+                </li>
+             {% endif %}
+          {% endfor %}
+    </ul>
+{%endblock%}
+
+
+{#
+    Exemple 1 : agenda complet, ...
+    ----------------------------------------------
+    DESCRIPTION :       
+    Liste des evenements encodés dans l'agenda par date décroissante
+
+    Nom du Bundle: VaeBaseBundle
+    Controller: Agenda
+    Action    : agenda
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans un block
+        - ...
+
+    POUR LE LIENS:
+    Route: vae_base_agenda_agenda
+           Paramètre: STRING : {'nomSite' : site.nom}
+
+    VARIABLES DISPONIBLES:
+        - agenda: ARRAY/OBJ : 
+                     propriétés : id, titre, titreEn, contenu, contenuEn, date, slug, slugEn
+        - langue
+        - site.nom
+    ----------------------------------------------                
+    POUR TESTER : app_dev.php/$_locale/nom du site/agenda
+    ----------------------------------------------
+#}
+
+
+

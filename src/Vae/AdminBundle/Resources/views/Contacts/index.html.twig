@@ -1,0 +1,10 @@
+{% extends 'VaeAdminBundle::index.html.twig' %}
+{% block bread %}Contacts{% endblock %}
+{% block title %}Contacts{% endblock %}
+{% block admin_title %}Contacts{% endblock %}
+
+{% block admin_table -%}
+  {{ render(controller("VaeAdminBundle:Contacts:limit", {"page": page })) }}
+{% endblock %}
+
+

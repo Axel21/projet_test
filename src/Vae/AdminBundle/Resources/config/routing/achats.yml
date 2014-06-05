@@ -1,0 +1,11 @@
+admin_achats_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "VaeAdminBundle:Achats:delete" }
+
+admin_achats_index:
+    pattern: /{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Achats:index"
+        page: 1
+    requirements:
+        page: \d+

@@ -1,0 +1,12 @@
+{% extends 'VaeAdminBundle::index.html.twig' %}
+{% block bread %}Formations{% endblock %}
+{% block title %}Formations éditer{% endblock %}
+{% block admin_title %}Formations éditer{% endblock %}
+
+{% block admin_table -%}
+  {{ render(controller("VaeAdminBundle:Formations:limit", {"page": page })) }}
+{% endblock %}
+
+{% block form %}
+    {{ render(controller("VaeAdminBundle:Formations:update", {"id": id})) }}
+{% endblock %}

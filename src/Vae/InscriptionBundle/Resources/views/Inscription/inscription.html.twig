@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+{%block content%}
+    <p>Vous avez bien été inscrit à cette formation : 
+    
+    {% if langue == 'fr'%}
+        {{formation.nom}}
+    {% else %}
+        {{formation.nomEn}}
+    {% endif %}
+    </p>
+{% endblock %}
+    
+  

@@ -51,10 +51,10 @@ class FormationController extends controller {
         
         if(!$rsFormation){
             
-            //throw $this->createNotFoundException('This page does not exist.');
             
             return $this->render('VaeBaseBundle:Formation:aucune.html.twig');
         }
+
         
         
         
@@ -99,13 +99,22 @@ class FormationController extends controller {
                                                                                                     'slugEn'=>$slugFormation));
         }
         
-        
-        
+
         if(!$rFormation){
             
             throw $this->createNotFoundException('This page does not exist.');
         }
         
+        $User = $this->get('security.context')->getToken()->getUser();
+        
+        $verifUser = $modelManager->getRepository('VaeInscriptionBundle:Inscriptions')->findOneBy(array('formations'=>$rFormation->getId(),
+                                                                                                        'users'=>$User));
+        
+        $verifFormation = $modelManager->getRepository('VaeInscriptionBundle:Inscriptions')->findBy(array('formations'=>$rFormation->getId()));
+        
+        $nbInscrit = count($verifFormation);
+        //var_dump($result);
+        //die();
         
         
         //on charge la vue et on lui envoi la liste des catégories
@@ -113,7 +122,9 @@ class FormationController extends controller {
                 array('formation' => $rFormation,
                       'site' => $rSite,
                       'rubrique' => $rRubrique,
-                      'langue' => $_locale));
+                      'langue' => $_locale,
+                      'verifUser' => $verifUser,
+                      'nbInscrit' => $nbInscrit));
     }
     
     

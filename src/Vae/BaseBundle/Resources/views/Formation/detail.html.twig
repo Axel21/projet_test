@@ -10,16 +10,61 @@
             <p>{{formation.debut|date('H:i')}}</p>
             <p>{{formation.fin|date('d-m-Y') }}</p>
             <p>{{formation.fin|date('H:i')}}</p>
+            <p>Inscrits : {{nbInscrit}}/{{formation.maxInscrit}}</p>
             <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug } )}}'>Retour à la liste</a></p>
         {% else %}
             <h2><a href="#">{{formation.nomEn}}</a></h2>
             <p>{{formation.descriptionEn}}</p>
             <p>{{formation.debut|date('m-d-Y') }}</p>
             <p>{{formation.fin|date('m-d-Y') }}</p>
-            <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn } )}}'>Back to list</a></p>
+            <p>Inscrits : {{nbInscrit}}/{{formation.maxInscrit}}</p>
+            <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn } )}}'>Back to list</a></p>    
         {% endif %}
-            
+         {% if nbInscrit == formation.maxInscrit %}
+            <p>COMPLET</p>
+         {% else %}
+            {% if verifUser == null %}
+                {% if langue == 'fr' %}
+                    <p><a href='{{ path('vae_inscription_formation',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugFormation' : formation.slug } )}}'>inscription</a></p>
+                {% else %}
+                    <p><a href='{{ path('vae_inscription_formation',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugFormation' : formation.slugEn } )}}'>inscription</a></p>
+                {% endif %}
+            {% else %}
+                    <p>Deja inscrit à cette formation</p>
+            {% endif %}
+         {% endif %}
+                
     </div>
          
 </article>
 {%endblock%}
+
+{#
+    Exemple 1 : detail formation
+    ----------------------------------------------
+    
+
+    Nom du Bundle: VaeBaseBundle
+    Controller: Formation
+    Action    : detail
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans un block
+        - ...
+
+    POUR LE LIENS:
+    Route: vae_base_formation_detail
+           Paramètre: STRING : {'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugFormation' : formation.slug }
+                                                                               .slugEn                           .slugEn
+    VARIABLES DISPONIBLES:
+        - formation: ARRAY/OBJ : 
+                     propriétés : id, nom, nomEn, contenu, contenuEn, debut, fin, slug, slugEn
+        - langue
+        - site.nom
+        - nbInscrit
+        - verifUser
+    ----------------------------------------------                
+    POUR TESTER : app_dev.php/$_locale/nom du site/formations/slug formation
+    ----------------------------------------------
+#}

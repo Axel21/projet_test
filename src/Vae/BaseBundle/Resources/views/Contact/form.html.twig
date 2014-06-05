@@ -1,0 +1,28 @@
+    <form action="{{path('vae_base_formation_contact_send', {'nomSite': site.nom, 'slugRubrique': rubrique.nom})}}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" value="envoyer" />
+    </form>
+
+{#
+    Exemple 1 : form de contact, ...
+    ----------------------------------------------
+    DESCRIPTION :       
+    formulaire de contact
+
+    Nom du Bundle: VaeBaseBundle
+    Controller: Contact
+    Action    : form
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans le rubrique detail
+
+    VARIABLES DISPONIBLES:
+        - {{ form_widget(form) }}
+        - site.nom
+        - rubrique.nom
+
+    ----------------------------------------------                
+    POUR TESTER : app_dev.php/$_locale/nom du site/contact
+    ----------------------------------------------
+#}

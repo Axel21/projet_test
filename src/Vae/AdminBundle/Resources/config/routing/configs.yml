@@ -1,0 +1,37 @@
+admin_configs_create:
+    pattern:  /create
+    defaults: { _controller: "VaeAdminBundle:Configs:create" }
+
+admin_configs_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "VaeAdminBundle:Configs:update" }
+
+admin_configs_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "VaeAdminBundle:Configs:delete" }
+
+
+admin_configs_index:
+    pattern: /{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Configs:index"
+        page: 1
+    requirements:
+        page: \d+
+
+admin_configs_index_add:
+    pattern: /add/page_{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Configs:index_add"
+        page: 1
+    requirements:
+        page: \d+
+
+admin_configs_index_update:
+    pattern: /update_{id}/page_{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Configs:index_update"
+        page: 1
+    requirements:
+        page: \d+
+        id: \d+

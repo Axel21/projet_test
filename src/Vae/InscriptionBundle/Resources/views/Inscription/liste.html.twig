@@ -1,0 +1,17 @@
+<h2>Liste des formations :</h2>
+{% for inscription in inscriptions %}
+<ul>
+                                            
+    <li>
+        <h3>{{inscription.formations.getNom()}}</h3>
+        <p>Du {{inscription.formations.getDebut()|date('d-m-Y')}} au {{inscription.formations.getFin()|date('d-m-Y')}}</p>
+        {% if inscription.payer == 0 %}
+            <p>non comfirmé</p>
+        {% else %}
+            <p>comfirmé</p>
+        {% endif %}
+        <p><a href='{{ path('vae_inscription_delete',{'id' : inscription.formations.getId()} )}}'>supprimer</a></p>
+    </li>
+        
+</ul>
+{% endfor %}

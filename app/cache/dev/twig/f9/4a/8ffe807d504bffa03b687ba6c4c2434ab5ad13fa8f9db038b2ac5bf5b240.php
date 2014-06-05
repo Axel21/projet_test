@@ -34,7 +34,7 @@ class __TwigTemplate_f94a8ffe807d504bffa03b687ba6c4c2434ab5ad13fa8f9db038b2ac5bf
                 echo "</a></h2>
             <p>";
                 // line 7
-                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["formation"]) ? $context["formation"] : $this->getContext($context, "formation")), "description"), "html", null, true);
+                echo $this->getAttribute((isset($context["formation"]) ? $context["formation"] : $this->getContext($context, "formation")), "description");
                 echo "</p>
             <p>";
                 // line 8

@@ -1,0 +1,10 @@
+{% extends 'VaeAdminBundle::index.html.twig' %}
+{% block bread %}Rubriques{% endblock %}
+{% block title %}Rubriques{% endblock %}
+{% block admin_title %}Rubriques{% endblock %}
+
+{% block admin_table -%}
+  {{ render(controller("VaeAdminBundle:Rubriques:limit", {"page": page })) }}
+{% endblock %}
+
+

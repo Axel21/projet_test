@@ -22,6 +22,7 @@
       <parameter key="VaeMultiSiteBundle">Vae\MultiSiteBundle\VaeMultiSiteBundle</parameter>
       <parameter key="VaeInscriptionBundle">Vae\InscriptionBundle\VaeInscriptionBundle</parameter>
       <parameter key="VaeBoutiqueBundle">Vae\BoutiqueBundle\VaeBoutiqueBundle</parameter>
+      <parameter key="VaeAdminBundle">Vae\AdminBundle\VaeAdminBundle</parameter>
       <parameter key="StofDoctrineExtensionsBundle">Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
@@ -175,7 +176,9 @@
       <parameter>C:\wamp\www\projet_soleil\vendor\friendsofsymfony\user-bundle\FOS\UserBundle\Resources\config\validation.xml</parameter>
       <parameter>C:\wamp\www\projet_soleil\vendor\friendsofsymfony\user-bundle\FOS\UserBundle\Resources\config\validation\orm.xml</parameter>
     </parameter>
-    <parameter key="validator.mapping.loader.yaml_files_loader.mapping_files" type="collection"/>
+    <parameter key="validator.mapping.loader.yaml_files_loader.mapping_files" type="collection">
+      <parameter>C:\wamp\www\projet_soleil\src\Vae\AdminBundle\Resources\config\validation.yml</parameter>
+    </parameter>
     <parameter key="validator.expression.class">Symfony\Component\Validator\Constraints\ExpressionValidator</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="fragment.listener.class">Symfony\Component\HttpKernel\EventListener\FragmentListener</parameter>
@@ -1967,6 +1970,12 @@
         <argument>fr</argument>
         <argument>messages</argument>
       </call>
+      <call method="addResource">
+        <argument>xlf</argument>
+        <argument>C:\wamp\www\projet_soleil\src\Vae\AdminBundle/Resources/translations\messages.fr.xlf</argument>
+        <argument>fr</argument>
+        <argument>messages</argument>
+      </call>
     </service>
     <service id="translation.loader.php" class="Symfony\Component\Translation\Loader\PhpFileLoader">
       <tag name="translation.loader" alias="php"/>
@@ -2654,7 +2663,9 @@
             </argument>
             <argument type="service">
               <service class="Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader" public="false">
-                <argument type="collection"/>
+                <argument type="collection">
+                  <argument>C:\wamp\www\projet_soleil\src\Vae\AdminBundle\Resources\config\validation.yml</argument>
+                </argument>
               </service>
             </argument>
           </argument>
@@ -2906,7 +2917,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>537dc19e65fb3</argument>
+            <argument>539018338d67f</argument>
           </service>
         </argument>
       </argument>
@@ -3075,6 +3086,17 @@
                   </argument>
                   <argument>null</argument>
                 </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>/admin</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
               </service>
             </argument>
             <argument type="service">
@@ -3198,7 +3220,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>537dc19e65fb3</argument>
+            <argument>539018338d67f</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3268,6 +3290,17 @@
                   <argument type="service">
                     <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
                       <argument>^/admin/</argument>
+                    </service>
+                  </argument>
+                  <argument type="collection">
+                    <argument>ROLE_ADMIN</argument>
+                  </argument>
+                  <argument>null</argument>
+                </call>
+                <call method="add">
+                  <argument type="service">
+                    <service class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+                      <argument>/admin</argument>
                     </service>
                   </argument>
                   <argument type="collection">
@@ -4332,6 +4365,10 @@
       <call method="addPath">
         <argument>C:\wamp\www\projet_soleil\src\Vae\BoutiqueBundle/Resources/views</argument>
         <argument>VaeBoutique</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\wamp\www\projet_soleil\src\Vae\AdminBundle/Resources/views</argument>
+        <argument>VaeAdmin</argument>
       </call>
       <call method="addPath">
         <argument>C:\wamp\www\projet_soleil\src\Acme\DemoBundle/Resources/views</argument>

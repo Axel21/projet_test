@@ -1,0 +1,37 @@
+admin_liens_create:
+    pattern:  /create
+    defaults: { _controller: "VaeAdminBundle:Liens:create" }
+
+admin_liens_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "VaeAdminBundle:Liens:update" }
+
+admin_liens_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "VaeAdminBundle:Liens:delete" }
+
+
+admin_liens_index:
+    pattern: /{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Liens:index"
+        page: 1
+    requirements:
+        page: \d+
+
+admin_liens_index_add:
+    pattern: /add/page_{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Liens:index_add"
+        page: 1
+    requirements:
+        page: \d+
+
+admin_liens_index_update:
+    pattern: /update_{id}/page_{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Liens:index_update"
+        page: 1
+    requirements:
+        page: \d+
+        id: \d+

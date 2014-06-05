@@ -1,0 +1,15 @@
+admin_inscriptions_update:
+    pattern:  /{id}-{id2}/update
+    defaults: { _controller: "VaeAdminBundle:Inscriptions:update" }
+
+admin_inscriptions_delete:
+    pattern:  /{id}-{id2}/delete
+    defaults: { _controller: "VaeAdminBundle:Inscriptions:delete" }
+
+admin_inscriptions_index:
+    pattern: /{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Inscriptions:index"
+        page: 1
+    requirements:
+        page: \d+

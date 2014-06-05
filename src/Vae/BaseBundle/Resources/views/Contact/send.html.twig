@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+{%block content%}
+<p>Le message à bien été envoyé !</p>
+{%endblock%}
+
+{#
+    Exemple 1 : reponse au form de contact, ...
+    ----------------------------------------------
+    DESCRIPTION :       
+    reponse du formulaire de contact
+
+    Nom du Bundle: VaeBaseBundle
+    Controller: Contact
+    Action    : form (avec le POST)
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans un block
+
+    POUR LE LIENS:
+    Route: vae_base_formation_contact_send
+           Paramètre: STRING : {'nomSite': site.nom, 'slugRubrique': rubrique.nom}
+
+    VARIABLES DISPONIBLES:
+        - site.nom
+        - rubrique
+          propriétés : id, nom, nomEn, slug, slugEn
+
+    ----------------------------------------------                
+    POUR TESTER : test le formulaire
+    ----------------------------------------------
+#}

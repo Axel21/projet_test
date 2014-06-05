@@ -73,12 +73,6 @@ class __TwigTemplate_b27f30c56bd0ee7752a4ee57300d168ec5f220be2ce8438a3ec33e60afd
         echo "\" />
 </form>
     
-<div>
-    <p>Pas encore inscrit? : <a href='";
-        // line 26
-        echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
-        echo "'>Inscription</a></p>
-</div>
 ";
     }
 
@@ -94,6 +88,6 @@ class __TwigTemplate_b27f30c56bd0ee7752a4ee57300d168ec5f220be2ce8438a3ec33e60afd
 
     public function getDebugInfo()
     {
-        return array (  79 => 26,  72 => 22,  67 => 20,  60 => 16,  55 => 14,  51 => 13,  46 => 11,  42 => 10,  39 => 9,  33 => 7,  31 => 6,  28 => 5,);
+        return array (  72 => 22,  67 => 20,  60 => 16,  55 => 14,  51 => 13,  46 => 11,  42 => 10,  39 => 9,  33 => 7,  31 => 6,  28 => 5,);
     }
 }

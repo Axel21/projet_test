@@ -8,13 +8,20 @@
 <ul>
     <li>
         {% if langue == 'fr'%}
-        <a href='fr/alphabétisation/accueil'>Alphabétisation</a>
-        <a href='fr/eft/accueil'>EFT</a>
-        <a href='fr/ceramique/accueil'>Céramique</a>
+        <a href='{{ path("vae_base_rubrique_detail", {'nomSite': 'Alphabétisation', 'slugRubrique': 'accueil'}) }}'>Alphabétisation</a>
+        <a href='{{ path("vae_base_rubrique_detail", {'nomSite': 'EFT', 'slugRubrique': 'accueil'}) }}'>EFT</a>
+        <a href='{{ path("vae_base_rubrique_detail", {'nomSite': 'Céramique', 'slugRubrique': 'accueil'}) }}'>Céramique</a>
         {% else %}
-        <a href='en/alphabétisation/home'>Alphabétisation</a>
-        <a href='en/eft/home'>EFT</a>
-        <a href='en/ceramique/home'>Céramique</a>
+        <a href='{{ path("vae_base_rubrique_detail", {'nomSite': 'Alphabétisation', 'slugRubrique': 'home'}) }}'>Alphabétisation</a>
+        <a href='{{ path("vae_base_rubrique_detail", {'nomSite': 'EFT', 'slugRubrique': 'home'}) }}'>EFT</a>
+        <a href='{{ path("vae_base_rubrique_detail", {'nomSite': 'Céramique', 'slugRubrique': 'home'}) }}'>Céramique</a>
         {% endif %}    
     </li>
 </ul>
+
+{#
+    code statique du chapeau
+
+    variable : langue
+    pour tester /app_dev.php/
+#}

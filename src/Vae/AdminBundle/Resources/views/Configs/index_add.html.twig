@@ -1,0 +1,12 @@
+{% extends 'VaeAdminBundle::index.html.twig' %}
+{% block bread %}Configs{% endblock %}
+{% block title %}Configs add{% endblock %}
+{% block admin_title %}Configs Ajouter{% endblock %}
+
+{% block admin_table -%}
+  {{ render(controller("VaeAdminBundle:Configs:limit", {"page": page })) }}
+{% endblock %}
+
+{% block form %}
+    {{ render(controller("VaeAdminBundle:Configs:create")) }}
+{% endblock %}

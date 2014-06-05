@@ -1,0 +1,368 @@
+$bgc: #1C1C1C;
+$bgc_top: darken($bgc, 3.5);
+$bgc_border: darken($bgc, 2.5);
+$bgc_input: #262626;
+$color: #dadada;
+$bdr_size : 10px;
+
+*{margin: 0px; padding: 0px;}
+
+body{
+	font-family: sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	color: $color;
+}
+
+.content{
+	width: 976px;
+	margin: auto;
+	padding: 0 12px;
+}
+
+a{
+	text-decoration: none;
+	color: $color;
+}
+
+a:hover{
+	color: lighten($color, 100);
+}
+
+ul{
+	list-style-type: none;
+}
+
+
+
+#top_header_wrapper{
+	display: block;
+	background-color: $bgc_top;
+	border-bottom: 6px solid $bgc_border;
+}
+
+
+#top_header{
+	color: #eee;
+	line-height: 60px;
+
+}
+
+#top_header{
+	nav{
+		overflow: hidden;
+	}
+	nav h1{
+		font-size: 1.8em;
+		float: left;
+	}
+
+	nav ul{
+		float: right;
+	}
+
+	nav li {
+		float: left;
+		margin-left: 20px;
+	}
+
+}
+
+#main_wrapper{
+	background-color: $bgc;
+}
+
+#main{
+	min-height: 800px;
+	background-color: $color;
+	border-left: 5px solid $bgc_border;
+	border-right: 5px solid $bgc_border;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+#main{
+
+	header{
+		padding: 8px 10px;
+		background-color: $bgc;
+		text-transform: uppercase;
+	}
+	h2{
+		font-size: 1.7em;
+		text-transform: uppercase;
+	}
+}
+
+#admin_wrapper{
+	overflow: hidden;
+	margin-top: 12px;
+}
+
+#admin_menu{
+	width: 200px;
+	background-color: $bgc;
+	float: left;
+
+}
+
+#admin_menu{
+	h2{
+		padding: 10px;
+		border-bottom: 2px $bgc_border solid;
+	}
+	ul{
+		background-color: $bgc_top
+	}
+	li a{
+		display: block;
+		padding: 10px;
+		font-size: 1.4em;
+		border-bottom: $color solid 2px;
+	}
+	li a:hover{
+		background-color: $color;
+		color: $bgc_top;
+	}
+}
+
+#admin{
+	width: 764px;
+	background-color: $bgc;
+	float: right;
+
+}
+
+#admin{
+	h2{
+		padding: 10px 20px;
+		border-bottom: 2px solid $bgc_border;
+	}
+
+}
+#admin_table{
+	padding: 20px 20px;
+	background-color: $bgc_top;
+	border-bottom: 12px $color solid;
+	// overflow:scroll;
+}
+
+#admin_table{
+	table{
+		border-collapse: separate !important;
+	    border-spacing: 0;
+		width: 100%;
+	  	background-color: $bgc;
+	  	overflow: hidden;
+	  	-webkit-border-radius: $bdr_size;
+	  	-moz-border-radius: $bdr_size;
+	  	border-radius: $bdr_size;
+	}
+
+
+	th{
+		font-size: 0.8em;
+		color: $bgc_top;
+		padding: 5px 5px;
+		background-color: $color;
+		text-transform: uppercase;
+		text-align: left;
+	}
+	td{
+		font-size: 0.75em;
+		padding: 7px 5px 0px 5px;
+				
+	}
+	tr:last-child td{
+		padding-bottom: 7px;
+	}
+
+	table td ul{
+		overflow: hidden;
+	}
+	table td ul li{
+		float: left;
+		margin-right: 5px;
+	}
+	table tbody{
+		background-color: $bgc;
+	}
+
+	#table_info{
+		overflow: hidden;
+		margin-top: 20px;
+	}
+	
+	#pagination{
+		float: left;
+	}
+	#pagination{
+		li{
+			font-size:1.2em;
+			color: $bgc_top;
+			float: left;
+			line-height: 30px;
+			width: 30px;
+			text-align: center;
+			margin-right: 5px;			
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, $color), color-stop(1, darken($color, 25)));
+			background: -moz-linear-gradient(top, $color 5%, darken($color, 25) 100%);
+			background: -webkit-linear-gradient(top, $color 5%, darken($color, 25) 100%);
+			background: -o-linear-gradient(top, $color 5%, darken($color, 25) 100%);
+			background: -ms-linear-gradient(top, $color 5%, darken($color, 25) 100%);
+			background: linear-gradient(to bottom, $color 5%, darken($color, 25) 100%);
+				}
+		a{
+			display: block;
+			color: $bgc_top;
+		}
+		a:hover{
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, darken($color, 25)), color-stop(1, $color));
+			background: -moz-linear-gradient(top, darken($color, 25) 5%, $color 100%);
+			background: -webkit-linear-gradient(top, darken($color, 25) 5%, $color 100%);
+			background: -o-linear-gradient(top, darken($color, 25) 5%, $color 100%);
+			background: -ms-linear-gradient(top, darken($color, 25) 5%, $color 100%);
+			background: linear-gradient(to bottom, darken($color, 25) 5%, $color 100%);
+		}
+		.active{
+			color: white;
+		}
+	}
+	.wrap_button{
+		float: right;
+	}
+
+}
+
+
+#admin_form{
+	padding: 20px 20px;
+	background-color: $bgc_top;
+}
+
+#admin_form{
+	form{
+		width: 100%;
+	  	background-color: $bgc;
+	  	overflow: hidden;
+	  	-webkit-border-radius: $bdr_size;
+	  	-moz-border-radius: $bdr_size;
+	  	border-radius: $bdr_size;
+	}
+
+	fieldset{
+	  	border: none;
+	}
+
+	legend{
+	  	text-transform: uppercase;
+	  	font-size: 1.3em;
+	  	padding: 20px;
+	}
+	
+	/* SYMFONY GENERE A DIV DIV WARP AROUND THE FORM */
+	div {
+		width: 100%;
+		background: $bgc;
+		border-top: 1px solid #262626;
+		border-bottom: 1px solid #161712;
+		padding: 10px 0 10px 0;
+		overflow: hidden;
+	}
+
+	label {
+		display: block;
+		color : $color;
+		font-size: 1.1em;
+		float: left;
+		width: 165px;
+		padding: 5px 20px 5px 20px;
+	}
+
+
+	input[type="text"], textarea {
+		color: $color;
+		padding: 10px 10px;
+		width: 400px;
+		background: #262626;
+		border-bottom: 1px double #171717;
+		border-top: 1px double #171717;
+		border-left: 1px double #333333;
+		border-right: 1px double #333333;
+	  	-webkit-border-radius: 7px;
+	  	-moz-border-radius: 7px;
+	  	border-radius: 7px;
+	}
+
+	textarea{
+		overflow: hidden;
+		height: 150px;
+	}
+
+	select{
+	   width: 420px;
+	   height: 35px;
+	   background: #262626;
+	   color: $color;
+	   border: none;
+	   padding: 0px 10px;
+	  	-webkit-border-radius: 7px;
+	  	-moz-border-radius: 7px;
+  		border-radius: 7px;
+	}
+
+	input[type="radio"], input[type="checkbox"]{
+		margin: 10px 25px 10px 10px;
+		background: #000;
+	}
+
+
+
+	button{
+		margin-left: 20px;
+		border: none;
+	}
+	input[type="text"]:focus, textarea:focus, select:focus{
+		outline: $color 1px solid;
+	}
+}
+
+
+
+.btn{
+	color: $bgc_top;
+	font-weight: bold;
+	padding: 10px 19px;
+	font-size: 1.1em;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, $color), color-stop(1, darken($color, 25)));
+	background: -moz-linear-gradient(top, $color 5%, darken($color, 25) 100%);
+	background: -webkit-linear-gradient(top, $color 5%, darken($color, 25) 100%);
+	background: -o-linear-gradient(top, $color 5%, darken($color, 25) 100%);
+	background: -ms-linear-gradient(top, $color 5%, darken($color, 25) 100%);
+	background: linear-gradient(to bottom, $color 5%, darken($color, 25) 100%);
+	text-shadow: 0px 1px 0px #ffffff;
+	cursor: pointer;
+}
+
+.btn:hover{
+	color: $bgc;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, darken($color, 25)), color-stop(1, $color));
+	background: -moz-linear-gradient(top, darken($color, 25) 5%, $color 100%);
+	background: -webkit-linear-gradient(top, darken($color, 25) 5%, $color 100%);
+	background: -o-linear-gradient(top, darken($color, 25) 5%, $color 100%);
+	background: -ms-linear-gradient(top, darken($color, 25) 5%, $color 100%);
+	background: linear-gradient(to bottom, darken($color, 25) 5%, $color 100%);
+}
+.btn:active {
+	position: relative;
+	top: 1px;
+}
+
+.btn_small{
+	padding: 5px 10px;
+	font-size: 0.9em;
+	border: none;
+}

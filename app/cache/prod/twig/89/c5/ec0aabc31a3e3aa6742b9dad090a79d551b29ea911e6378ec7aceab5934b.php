@@ -28,49 +28,51 @@ class __TwigTemplate_89c5ec0aabc31a3e3aa6742b9dad090a79d551b29ea911e6378ec7aceab
     public function block_content($context, array $blocks = array())
     {
         // line 3
-        echo "
-<article>
+        echo "<article>
+    <div>
+        <a href=\"";
+        // line 5
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_rubrique_detail", array("_locale" => "fr", "nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slug"))), "html", null, true);
+        echo "\">Francais</a>
+        <a href=\"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_rubrique_detail", array("_locale" => "en", "nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn"))), "html", null, true);
+        echo "\">Anglais</a>   
+    </div>
                                             
     <div>
         ";
-        // line 7
+        // line 10
         if (((isset($context["langue"]) ? $context["langue"] : null) == "fr")) {
-            // line 8
+            // line 11
             echo "            <h2><a href=\"#\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "nom"), "html", null, true);
             echo "</a></h2>
             <p>";
-            // line 9
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "contenu"), "html", null, true);
+            // line 12
+            echo $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "contenu");
             echo "</p>
         ";
         } else {
-            // line 11
+            // line 14
             echo "            <h2><a href=\"#\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "nomEn"), "html", null, true);
             echo "</a></h2>
             <p>";
-            // line 12
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "contenuEn"), "html", null, true);
+            // line 15
+            echo $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "contenuEn");
             echo "</p>
         ";
         }
-        // line 14
-        echo "    </div>
-    
-    <div>
-        <a href=\"";
         // line 17
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_rubrique_detail", array("_locale" => "fr", "nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slug"))), "html", null, true);
-        echo "\">Francais</a>
-        <a href=\"";
-        // line 18
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_rubrique_detail", array("_locale" => "en", "nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn"))), "html", null, true);
-        echo "\">Anglais</a>   
+        echo "            <img src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("uploads/images/" . $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "image"))), "html", null, true);
+        echo "\" />
     </div>
+   
 
 </article>
-
+<div>
 ";
         // line 23
         if (((isset($context["langue"]) ? $context["langue"] : null) == "fr")) {
@@ -81,40 +83,91 @@ class __TwigTemplate_89c5ec0aabc31a3e3aa6742b9dad090a79d551b29ea911e6378ec7aceab
                 echo "        ";
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Formation:index", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slug"))));
                 echo "
+        ";
+                // line 26
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"))));
+                echo "
     ";
             }
-            // line 27
+            // line 28
             echo "    ";
             if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slug") == "boutique")) {
-                // line 28
+                // line 29
                 echo "        ";
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBoutiqueBundle:Produit:galerie", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slug"))));
+                echo "
+        ";
+                // line 30
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBoutiqueBundle:Produit:index", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slug"))));
                 echo "
     ";
             }
-        } else {
-            // line 31
+            // line 32
             echo "    ";
-            if ((($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn") == "trainings") || ($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn") == "workshop"))) {
-                // line 32
+            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slug") == "accueil")) {
+                // line 33
                 echo "        ";
-                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Formation:index", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn"))));
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"))));
                 echo "
     ";
             }
-            // line 34
+            // line 35
+            echo "    ";
+            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slug") == "contact")) {
+                // line 36
+                echo "        ";
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Contact:form", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slug"))));
+                echo "
+    ";
+            }
+        } else {
+            // line 39
+            echo "    ";
+            if ((($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn") == "trainings") || ($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn") == "workshop"))) {
+                // line 40
+                echo "        ";
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Formation:index", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn"))));
+                echo "
+        ";
+                // line 41
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"))));
+                echo "
+    ";
+            }
+            // line 43
             echo "    ";
             if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn") == "shop")) {
-                // line 35
+                // line 44
                 echo "        ";
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBoutiqueBundle:Produit:galerie", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn"))));
+                echo "
+        ";
+                // line 45
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBoutiqueBundle:Produit:index", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn"))));
                 echo "
     ";
             }
+            // line 47
+            echo "    ";
+            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn") == "home")) {
+                // line 48
+                echo "        ";
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"))));
+                echo "
+    ";
+            }
+            // line 50
+            echo "    ";
+            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn") == "contact")) {
+                // line 51
+                echo "        ";
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Contact:form", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : null), "slugEn"))));
+                echo "
+    ";
+            }
         }
-        // line 37
-        echo " 
-
+        // line 54
+        echo "</div>
 ";
     }
 
@@ -130,6 +183,6 @@ class __TwigTemplate_89c5ec0aabc31a3e3aa6742b9dad090a79d551b29ea911e6378ec7aceab
 
     public function getDebugInfo()
     {
-        return array (  116 => 37,  109 => 35,  106 => 34,  100 => 32,  97 => 31,  90 => 28,  87 => 27,  81 => 25,  78 => 24,  76 => 23,  68 => 18,  64 => 17,  59 => 14,  54 => 12,  49 => 11,  44 => 9,  39 => 8,  37 => 7,  31 => 3,  28 => 2,);
+        return array (  170 => 54,  163 => 51,  160 => 50,  154 => 48,  151 => 47,  146 => 45,  141 => 44,  138 => 43,  133 => 41,  128 => 40,  125 => 39,  118 => 36,  115 => 35,  109 => 33,  106 => 32,  101 => 30,  96 => 29,  93 => 28,  88 => 26,  83 => 25,  80 => 24,  78 => 23,  68 => 17,  63 => 15,  58 => 14,  53 => 12,  48 => 11,  46 => 10,  39 => 6,  35 => 5,  31 => 3,  28 => 2,);
     }
 }

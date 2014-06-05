@@ -3,14 +3,16 @@
 namespace Vae\BaseBundle\Entity;
 use Vae\MultiSiteBundle\Entity\Liaisons as MultiBase;
 use Doctrine\ORM\Mapping as ORM;
-
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Rubriques
  *
  * @ORM\Table(name="rubriques", indexes={@ORM\Index(name="sites_id", columns={"sites_id"})})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Rubriques extends MultiBase
 {
@@ -25,17 +27,15 @@ class Rubriques extends MultiBase
 
     /**
      * @var string
-     *
      * @Gedmo\Slug(fields={"nom"})
-     * @ORM\Column(name="slug", type="string", length=100, nullable=true)
+     * @ORM\Column(name="slug", type="string", length=100, nullable=true, unique=false)
      */
     private $slug;
 
     /**
      * @var string
-     * 
      * @Gedmo\Slug(fields={"nomEn"})
-     * @ORM\Column(name="slug_en", type="string", length=100, nullable=true)
+     * @ORM\Column(name="slug_en", type="string", length=100, nullable=true, unique=false)
      */
     private $slugEn;
 
@@ -44,12 +44,12 @@ class Rubriques extends MultiBase
      *
      * @ORM\Column(name="nom", type="string", length=100, nullable=false)
      */
-    private $nom = 'NULL';
+    private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_en", type="string", length=100, nullable=false)
+     * @ORM\Column(name="nom_en", type="string", length=100, nullable=true)
      */
     private $nomEn;
 
@@ -74,6 +74,10 @@ class Rubriques extends MultiBase
      */
     private $image;
 
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
     
 
     /**
@@ -247,4 +251,66 @@ class Rubriques extends MultiBase
         return $this->image;
     }
 
+
+
+    /*GESTION DES FICHIERS*/
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les images uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return 'uploads/images';
+    }
+
+ /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->file) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->image = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        $this->file->move($this->getUploadRootDir(), $this->image);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
 }

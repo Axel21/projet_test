@@ -11,24 +11,25 @@
         <nav>
             {{ render(controller('VaeBaseBundle:Rubrique:menu', {'nomSite' : site.nom } ))}}
         </nav>
+        <div>     
             
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            
-            <a href='{{ path('fos_user_security_logout')}}'>Deconnexion</a>
+                <a href='{{ path('fos_user_profile_show')}}'>Profile</a>
+                <a href='{{ path('fos_user_security_logout')}}'>Deconnexion</a>
  
             {% else %}
-            <a href='{{ path('fos_user_security_login')}}'>Connexion</a>
+                <a href='{{ path('fos_user_registration_register')}}'>Inscription</a>
+                <a href='{{ path('fos_user_security_login')}}'>Connexion</a>
             {% endif %}
-            
-            
-           
-            
-        
+        </div>  
+ 
         {% block content %}{% endblock %}
         
         <aside>
             {{ render(controller('VaeBaseBundle:Agenda:liste', {'nomSite' : site.nom } ))}}
+            {{ render(controller('VaeBaseBundle:Liens:listePartenaires', {'nomSite' : site.nom } ))}}
         </aside>
         {% endblock %}
+            {%block javascripts%} {% endblock %}
     </body>
 </html>

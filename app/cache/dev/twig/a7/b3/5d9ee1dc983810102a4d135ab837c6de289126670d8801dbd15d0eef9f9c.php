@@ -14,6 +14,7 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
             'stylesheets' => array($this, 'block_stylesheets'),
             'body' => array($this, 'block_body'),
             'content' => array($this, 'block_content'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -41,6 +42,9 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
         // line 10
         $this->displayBlock('body', $context, $blocks);
         // line 33
+        echo "            ";
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 34
         echo "    </body>
 </html>
 ";
@@ -67,48 +71,62 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Rubrique:menu", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
         echo "
         </nav>
+        <div>     
             
             ";
-        // line 15
+        // line 16
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 16
-            echo "            
-            <a href='";
             // line 17
+            echo "                <a href='";
+            echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
+            echo "'>Profile</a>
+                <a href='";
+            // line 18
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "'>Deconnexion</a>
  
             ";
         } else {
-            // line 20
-            echo "            <a href='";
+            // line 21
+            echo "                <a href='";
+            echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
+            echo "'>Inscription</a>
+                <a href='";
+            // line 22
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "'>Connexion</a>
             ";
         }
-        // line 22
-        echo "            
-            
-           
-            
-        
+        // line 24
+        echo "        </div>  
+ 
         ";
-        // line 27
+        // line 26
         $this->displayBlock('content', $context, $blocks);
-        // line 28
+        // line 27
         echo "        
         <aside>
             ";
-        // line 30
+        // line 29
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Agenda:liste", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
+        echo "
+            ";
+        // line 30
+        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listePartenaires", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
         echo "
         </aside>
         ";
     }
 
-    // line 27
+    // line 26
     public function block_content($context, array $blocks = array())
     {
+    }
+
+    // line 33
+    public function block_javascripts($context, array $blocks = array())
+    {
+        echo " ";
     }
 
     public function getTemplateName()
@@ -123,6 +141,6 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
 
     public function getDebugInfo()
     {
-        return array (  110 => 27,  103 => 30,  99 => 28,  97 => 27,  90 => 22,  84 => 20,  78 => 17,  75 => 16,  73 => 15,  67 => 12,  61 => 10,  56 => 6,  50 => 5,  44 => 33,  42 => 10,  35 => 7,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  127 => 33,  122 => 26,  111 => 29,  107 => 27,  105 => 26,  91 => 21,  85 => 18,  71 => 12,  65 => 10,  60 => 6,  54 => 5,  45 => 33,  43 => 10,  36 => 7,  34 => 6,  30 => 5,  24 => 1,  170 => 54,  163 => 51,  160 => 50,  154 => 48,  151 => 47,  146 => 45,  141 => 44,  138 => 43,  133 => 41,  128 => 40,  125 => 39,  118 => 36,  115 => 30,  109 => 33,  106 => 32,  101 => 24,  96 => 22,  93 => 28,  88 => 26,  83 => 25,  80 => 17,  78 => 16,  68 => 17,  63 => 15,  58 => 14,  53 => 12,  48 => 34,  46 => 10,  39 => 6,  35 => 5,  31 => 3,  28 => 2,);
     }
 }

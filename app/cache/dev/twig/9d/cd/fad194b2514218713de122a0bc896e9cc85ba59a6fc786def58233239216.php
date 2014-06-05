@@ -34,6 +34,12 @@ class __TwigTemplate_9dcdfad194b2514218713de122a0bc896e9cc85ba59a6fc786def582332
         // line 6
         echo $this->env->getExtension('routing')->getPath("fos_user_change_password");
         echo "'>modifier mot de passe</a></p>
+</div>
+<div>
+    ";
+        // line 9
+        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeInscriptionBundle:Inscription:liste"));
+        echo "
 </div>";
     }
 
@@ -49,6 +55,6 @@ class __TwigTemplate_9dcdfad194b2514218713de122a0bc896e9cc85ba59a6fc786def582332
 
     public function getDebugInfo()
     {
-        return array (  35 => 6,  29 => 5,  23 => 4,  19 => 2,);
+        return array (  41 => 9,  35 => 6,  29 => 5,  23 => 4,  19 => 2,  31 => 4,  28 => 3,);
     }
 }

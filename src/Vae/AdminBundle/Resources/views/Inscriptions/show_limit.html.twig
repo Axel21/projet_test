@@ -1,0 +1,46 @@
+<table class="tablesorter">
+    <thead>
+        <tr>
+            <th>users</th>
+            <th>formation</th>
+            <th>payer</th>
+            <th>action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for entity in entities %}
+    	<tr>
+            <td>{{ entity.users.username|length > 15 ? entity.users.username[:15] ~ '...' : entity.users.username }}</td>
+            <td>{{ entity.formations.nom|length > 15 ? entity.formations.nom[:15] ~ '...' : entity.formations.nom }}</td>
+            {% if entity.payer == 1 %}
+                <td>payé</td>
+            {% else %}
+                <td>pas payé</td>
+            {% endif %}
+
+            <td>
+                <ul>
+                    <li><a class="btn btn-small" href="{{ path('admin_inscriptions_update', { 'id':entity.users.id, 'id2': entity.formations.id}) }}">change</a></li>
+                    <li><a class="btn btn-small" href="{{ path('admin_inscriptions_delete', { 'id': entity.users.id, 'id2': entity.formations.id}) }}">suppr</a></li>
+                </ul>
+            </td>
+    	</tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+    <div id="table_info">
+        <ul id="pagination">
+        {% for list_page in range(page - 4, page + 4) %}
+        {% if list_page > 0 and list_page <= count_page %}
+        	{% if list_page == page %}
+				<li class="active">{{ page }}</li>
+        	{% else %}
+        	<li><a href="{{ path('admin_inscriptions_index', {'page': list_page}) }}">{{ list_page }}</a></li>
+        	{% endif %}
+        		
+        {% endif %}
+        {% endfor %}
+        </ul>
+	</div>

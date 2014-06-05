@@ -1,0 +1,37 @@
+admin_produits_create:
+    pattern:  /create
+    defaults: { _controller: "VaeAdminBundle:Produits:create" }
+
+admin_produits_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "VaeAdminBundle:Produits:update" }
+
+admin_produits_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "VaeAdminBundle:Produits:delete" }
+
+
+admin_produits_index:
+    pattern: /{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Produits:index"
+        page: 1
+    requirements:
+        page: \d+
+
+admin_produits_index_add:
+    pattern: /add/page_{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Produits:index_add"
+        page: 1
+    requirements:
+        page: \d+
+
+admin_produits_index_update:
+    pattern: /update_{id}/page_{page}
+    defaults: 
+        _controller: "VaeAdminBundle:Produits:index_update"
+        page: 1
+    requirements:
+        page: \d+
+        id: \d+

@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Vae\MultiSiteBundle\VaeMultiSiteBundle(),
             new Vae\InscriptionBundle\VaeInscriptionBundle(),
             new Vae\BoutiqueBundle\VaeBoutiqueBundle(),
+            new Vae\AdminBundle\VaeAdminBundle(),
             
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
         );

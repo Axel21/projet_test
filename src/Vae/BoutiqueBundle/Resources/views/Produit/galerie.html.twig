@@ -1,0 +1,41 @@
+<h1>galerie des créations</h1>
+<ul id="listeProduit">
+         {% for produit in produits %}
+            {% if langue == 'fr'%}
+                <li>
+                    <h3><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}">{{produit.nom}}</a></h3>
+                    <p>{{produit.description}}</p>
+             {% else %}
+                    <h3><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}">{{produit.nomEn}}</a></h3>
+                    <p>{{produit.descriptionEn}}</p>
+             {% endif %}
+                    <img src="{{ asset('uploads/images/'~produit.image) }}" />
+                </li>
+          {% endfor %}
+    </ul>
+
+{#
+    Exemple 1 : detail de produit en vente
+    ----------------------------------------------
+
+    Nom du Bundle: VaeBoutiqueBundle
+    Controller: Produit
+    Action    : galerie
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans detail rubrique
+        - {{ render(controller('VaeBoutiqueBundle:Produit:galerie', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slug} ))}}
+
+    VARIABLES DISPONIBLES:
+        - produit: ARRAY/OBJ : 
+                     propriétés : id, nom, nomEn, description, descriptionEn, disponible, prix, slug, slugEn, image
+
+        - langue
+        - site.nom
+        - rubrique.slug
+                  .slugEn
+    ----------------------------------------------                
+    POUR TESTER : app_dev.php/$_locale/céramique/boutique
+    ----------------------------------------------
+#}

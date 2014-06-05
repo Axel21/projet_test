@@ -1,0 +1,10 @@
+{% extends 'VaeAdminBundle::index.html.twig' %}
+{% block bread %}Agendas{% endblock %}
+{% block title %}Agendas{% endblock %}
+{% block admin_title %}Agendas{% endblock %}
+
+{% block admin_table -%}
+  {{ render(controller("VaeAdminBundle:Agendas:limit", {"page": page })) }}
+{% endblock %}
+
+

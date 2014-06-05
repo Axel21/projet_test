@@ -1,0 +1,10 @@
+{% extends 'VaeAdminBundle::index.html.twig' %}
+{% block bread %}Produits{% endblock %}
+{% block title %}Produits{% endblock %}
+{% block admin_title %}Produits{% endblock %}
+
+{% block admin_table -%}
+  {{ render(controller("VaeAdminBundle:Produits:limit", {"page": page })) }}
+{% endblock %}
+
+

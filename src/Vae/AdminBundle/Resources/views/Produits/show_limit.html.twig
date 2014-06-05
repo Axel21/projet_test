@@ -1,0 +1,49 @@
+<table class="tablesorter">
+    <thead>
+        <tr>
+            <th>nom</th>
+            <th>description</th>
+            <th>prix</th>
+            <th>disponible</th>
+            <th>à vendre</th>
+            <th>action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for entity in entities %}
+    	<tr>
+    		<td>{{ entity.nom|length > 15 ? entity.nom[:15] ~ '...' : entity.nom }}</td>
+            <td>{{ entity.description|length > 15 ? entity.description[:15] ~ '...' : entity.description }}</td>
+            <td>{{ entity.prix|length > 15 ? entity.prix[:15] ~ '...' : entity.prix }}</td>
+            <td>{{ entity.disponible|length > 15 ? entity.disponible[:15] ~ '...' : entity.disponible }}</td>
+            <td>{{ entity.vendre|length > 15 ? entity.vendre[:15] ~ '...' : entity.vendre }}</td>
+
+            <td>
+                <ul>
+                    <li><a class="btn btn-small" href="{{ path('admin_produits_index_update', { 'id':entity.id, 'page': page}) }}">editer</a></li>
+                    <li><a class="btn btn-small" href="{{ path('admin_produits_delete', { 'id': entity.id }) }}">suppr</a></li>
+                </ul>
+            </td>
+    	</tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+    <div id="table_info">
+        <ul id="pagination">
+        {% for list_page in range(page - 4, page + 4) %}
+        {% if list_page > 0 and list_page <= count_page %}
+        	{% if list_page == page %}
+				<li class="active">{{ page }}</li>
+        	{% else %}
+        	<li><a href="{{ path('admin_produits_index', {'page': list_page}) }}">{{ list_page }}</a></li>
+        	{% endif %}
+        		
+        {% endif %}
+        {% endfor %}
+        </ul>
+        <div class="wrap_button">
+            <a href="{{ path('admin_produits_index_add', {'page': page}) }}" class="btn btn_small">Ajouter</a>
+        </div>
+	</div>

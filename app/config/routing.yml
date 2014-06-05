@@ -1,3 +1,7 @@
+vae_admin:
+    resource: "@VaeAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+    
 vae_user:
     resource: "@VaeUserBundle/Resources/config/routing.yml"
     prefix:   /
@@ -17,5 +21,7 @@ vae_boutique:
 vae_inscription:
     resource: "@VaeInscriptionBundle/Resources/config/routing.yml"
     prefix:   /
+    
+
     
 

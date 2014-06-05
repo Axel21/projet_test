@@ -1,39 +1,83 @@
 {% extends "::base.html.twig" %}
 {%block content%}
-
 <article>
-                                            
-    <div>
-        {% if langue == 'fr'%}
-            <h2><a href="#">{{rubrique.nom}}</a></h2>
-            <p>{{rubrique.contenu}}</p>
-        {% else %}
-            <h2><a href="#">{{rubrique.nomEn}}</a></h2>
-            <p>{{rubrique.contenuEn}}</p>
-        {% endif %}
-    </div>
-    
     <div>
         <a href="{{ path("vae_base_rubrique_detail", { '_locale': 'fr', 'nomSite': site.nom, 'slugRubrique': rubrique.slug}) }}">Francais</a>
         <a href="{{ path("vae_base_rubrique_detail", { '_locale': 'en', 'nomSite': site.nom, 'slugRubrique': rubrique.slugEn}) }}">Anglais</a>   
     </div>
+                                            
+    <div>
+        {% if langue == 'fr'%}
+            <h2><a href="#">{{rubrique.nom}}</a></h2>
+            <p>{{rubrique.contenu|raw}}</p>
+        {% else %}
+            <h2><a href="#">{{rubrique.nomEn}}</a></h2>
+            <p>{{rubrique.contenuEn|raw}}</p>
+        {% endif %}
+            <img src="{{ asset('uploads/images/'~rubrique.image) }}" />
+    </div>
+   
 
 </article>
-
+<div>
 {% if langue == 'fr'%}
     {% if ((rubrique.slug == 'formations') or (rubrique.slug == 'ateliers')) %}
         {{ render(controller('VaeBaseBundle:Formation:index', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slug } ))}}
+        {{ render(controller('VaeBaseBundle:Liens:listeVideos', {'nomSite' : site.nom } ))}}
     {% endif %}
     {% if ((rubrique.slug == 'boutique')) %}
+        {{ render(controller('VaeBoutiqueBundle:Produit:galerie', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slug} ))}}
         {{ render(controller('VaeBoutiqueBundle:Produit:index', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slug} ))}}
+    {% endif %}
+    {% if ((rubrique.slug == 'accueil')) %}
+        {{ render(controller('VaeBaseBundle:Liens:listeVideos', {'nomSite' : site.nom } ))}}
+    {% endif %}
+    {% if ((rubrique.slug == 'contact')) %}
+        {{ render(controller('VaeBaseBundle:Contact:form', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slug } ))}}
     {% endif %}
 {% else %}
     {% if (rubrique.slugEn == 'trainings') or (rubrique.slugEn == 'workshop') %}
         {{ render(controller('VaeBaseBundle:Formation:index', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn } ))}}
+        {{ render(controller('VaeBaseBundle:Liens:listeVideos', {'nomSite' : site.nom } ))}}
     {% endif %}
     {% if ((rubrique.slugEn == 'shop')) %}
+        {{ render(controller('VaeBoutiqueBundle:Produit:galerie', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn} ))}}
         {{ render(controller('VaeBoutiqueBundle:Produit:index', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn} ))}}
     {% endif %}
-{% endif %} 
-
+    {% if ((rubrique.slugEn == 'home')) %}
+        {{ render(controller('VaeBaseBundle:Liens:listeVideos', {'nomSite' : site.nom } ))}}
+    {% endif %}
+    {% if ((rubrique.slugEn == 'contact')) %}
+        {{ render(controller('VaeBaseBundle:Contact:form', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn} ))}}
+    {% endif %}
+{% endif %}
+</div>
 {%endblock%}
+
+{#
+    Exemple 1 : detail rubrique
+    ----------------------------------------------
+
+    Nom du Bundle: VaeBaseBundle
+    Controller: Rubrique
+    Action    : detail
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans un block
+
+    LIENS:
+        - vae_base_rubrique_detail
+        -{'nomSite': site.nom, 'slugRubrique': rubrique.slug}
+                                                       .slugEn
+
+    VARIABLES DISPONIBLES:
+        - rubrique: ARRAY/OBJ : 
+                     propriétés : id, nom, nomEn,contenu, contenuEn, slug, slugEn, image
+        - site.nom
+        - langue
+
+    ----------------------------------------------                
+    POUR TESTER : app_dev.php/$_locale/nom du site/slug rubrique
+    ----------------------------------------------
+#}

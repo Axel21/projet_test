@@ -1,0 +1,12 @@
+{% extends 'VaeAdminBundle::index.html.twig' %}
+{% block bread %}Produits{% endblock %}
+{% block title %}Produits éditer{% endblock %}
+{% block admin_title %}Produits éditer{% endblock %}
+
+{% block admin_table -%}
+  {{ render(controller("VaeAdminBundle:Produits:limit", {"page": page })) }}
+{% endblock %}
+
+{% block form %}
+    {{ render(controller("VaeAdminBundle:Produits:update", {"id": id})) }}
+{% endblock %}

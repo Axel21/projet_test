@@ -5,7 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AgendaController extends controller {
     
-    public function listeAction($_locale, $nomSite){
+    
+        public function agendaAction($_locale, $nomSite){
         
         
         $modelManager = $this->getDoctrine()->getManager();
@@ -14,7 +15,14 @@ class AgendaController extends controller {
         
         if($_locale == 'fr'){
         
-            $rsAgendas = $modelManager->getRepository('VaeBaseBundle:Agendas')->findBy(array('sites'=>$rSite->getId()));
+            $rsAgendas = $modelManager->createQueryBuilder()
+                                        ->select('a')
+                                        ->from('VaeBaseBundle:Agendas', 'a')
+                                        ->where('a.sites = :Id')
+                                        ->orderBy('a.date', 'DESC')
+                                        ->setParameter('Id', $rSite->getId())
+                                        ->getQuery()
+                                        ->getResult();
         }
         
         else{
@@ -24,7 +32,54 @@ class AgendaController extends controller {
                                         ->from('VaeBaseBundle:Agendas', 'a')
                                         ->where('a.sites = :Id')
                                         ->andWhere('a.slugEn IS NOT NULL')
+                                        ->orderBy('a.date', 'DESC')
                                         ->setParameter('Id', $rSite->getId())
+                                        ->getQuery()
+                                        ->getResult();
+        }
+
+        //on charge la vue et on lui envoi la liste des catégories
+        return $this->render('VaeBaseBundle:Agenda:agenda.html.twig',
+                array('agendas' => $rsAgendas,
+                      'site' => $rSite,
+                      'langue' => $_locale));
+    }
+    
+    
+    public function listeAction($_locale, $nomSite){
+        
+        
+        $modelManager = $this->getDoctrine()->getManager();
+        
+        $rSite = $modelManager->getRepository('VaeMultiSiteBundle:Sites')->findOneByNom($nomSite);
+        
+        if($_locale == 'fr'){
+        
+            $rsAgendas = $modelManager->createQueryBuilder()
+                                        ->select('a')
+                                        ->from('VaeBaseBundle:Agendas', 'a')
+                                        ->where('a.sites = :Id')
+                                        ->andwhere('a.date > :NOW')
+                                        ->orderBy('a.date', 'ASC')
+                                        ->setParameter('Id', $rSite->getId())
+                                        ->setParameter(':NOW', 'NOW()')
+                                        ->setMaxResults('5')
+                                        ->getQuery()
+                                        ->getResult();
+        }
+        
+        else{
+            
+            $rsAgendas = $modelManager->createQueryBuilder()
+                                        ->select('a')
+                                        ->from('VaeBaseBundle:Agendas', 'a')
+                                        ->where('a.sites = :Id')
+                                        ->andwhere('a.date < :NOW')
+                                        ->andWhere('a.slugEn IS NOT NULL')
+                                        ->orderBy('a.date', 'ASC')
+                                        ->setParameter('Id', $rSite->getId())
+                                        ->setParameter(':NOW', 'NOW()')
+                                        ->setMaxResults('5')
                                         ->getQuery()
                                         ->getResult();
         }

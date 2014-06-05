@@ -64,10 +64,10 @@ class Agendas extends \Vae\BaseBundle\Entity\Agendas implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'titre', 'titreEn', 'contenu', 'contenuEn', 'date');
+            return array('__isInitialized__', 'id', 'slug', 'slugEn', 'titre', 'titreEn', 'contenu', 'contenuEn', 'date');
         }
 
-        return array('__isInitialized__', 'id', 'titre', 'titreEn', 'contenu', 'contenuEn', 'date');
+        return array('__isInitialized__', 'id', 'slug', 'slugEn', 'titre', 'titreEn', 'contenu', 'contenuEn', 'date');
     }
 
     /**
@@ -186,6 +186,50 @@ class Agendas extends \Vae\BaseBundle\Entity\Agendas implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
 
         return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSlug($slug)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+
+        return parent::setSlug($slug);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSlug()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+
+        return parent::getSlug();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSlugEn($slugEn)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlugEn', array($slugEn));
+
+        return parent::setSlugEn($slugEn);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSlugEn()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlugEn', array());
+
+        return parent::getSlugEn();
     }
 
     /**

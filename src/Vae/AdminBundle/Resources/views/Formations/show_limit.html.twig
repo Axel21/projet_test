@@ -1,0 +1,52 @@
+<table class="tablesorter">
+    <thead>
+        <tr>
+            <th>nom</th>
+            <th>description</th>
+            <th>debut</th>
+            <th>fin</th>
+            <th>prix</th>
+            <th>rubrique</th>
+            <th>action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for entity in entities %}
+    	<tr>
+    		<td>{{ entity.nom|length > 15 ? entity.nom[:15] ~ '...' : entity.nom }}</td>
+            <td>{{ entity.description|length > 15 ? entity.description[:15] ~ '...' : entity.description }}</td>
+            <td>{{ entity.debut.format('d-m-y : h')|length > 15 ? entity.debut.format('d-m-y : h')[:15] ~ '...' : entity.debut.format('d-m-y : h') }}</td>
+            <td>{{ entity.fin.format('d-m-y : h')|length > 15 ? entity.fin.format('d-m-y : h')[:15] ~ '...' : entity.fin.format('d-m-y : h') }}</td>
+            <td>{{ entity.prix|length > 15 ? entity.prix[:15] ~ '...' : entity.prix }}</td>
+            <td>{{ entity.rubriques.sites.nom|length > 15 ? entity.rubriques.sites.nom[:15] ~ '...' : entity.rubriques.sites.nom }}</td>
+
+            <td>
+                <ul>
+                    <li><a class="btn btn-small" href="{{ path('admin_formations_index_update', { 'id':entity.id, 'page': page}) }}">editer</a></li>
+                    <li><a class="btn btn-small" href="{{ path('admin_formations_delete', { 'id': entity.id }) }}">suppr</a></li>
+                </ul>
+            </td>
+    	</tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+    <div id="table_info">
+        <ul id="pagination">
+        {% for list_page in range(page - 4, page + 4) %}
+        {% if list_page > 0 and list_page <= count_page %}
+        	{% if list_page == page %}
+				<li class="active">{{ page }}</li>
+        	{% else %}
+        	<li><a href="{{ path('admin_formations_index', {'page': list_page}) }}">{{ list_page }}</a></li>
+        	{% endif %}
+        		
+        {% endif %}
+        {% endfor %}
+        </ul>
+        <div class="wrap_button">
+            <a href="{{ path('admin_formations_index_add', {'page': page}) }}" class="btn btn_small">Ajouter</a>
+        </div>
+	</div>
+

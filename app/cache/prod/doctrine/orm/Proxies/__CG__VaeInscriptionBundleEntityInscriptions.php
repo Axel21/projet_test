@@ -173,4 +173,70 @@ class Inscriptions extends \Vae\InscriptionBundle\Entity\Inscriptions implements
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function setUsers(\Vae\UserBundle\Entity\Users $users)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsers', array($users));
+
+        return parent::setUsers($users);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUsers()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsers', array());
+
+        return parent::getUsers();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFormations(\Vae\BaseBundle\Entity\Formations $formations)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFormations', array($formations));
+
+        return parent::setFormations($formations);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFormations()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFormations', array());
+
+        return parent::getFormations();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPayer($payer)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPayer', array($payer));
+
+        return parent::setPayer($payer);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPayer()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPayer', array());
+
+        return parent::getPayer();
+    }
+
 }

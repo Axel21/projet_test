@@ -5,3 +5,6 @@
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
     <p><a href='{{path('fos_user_change_password')}}'>modifier mot de passe</a></p>
 </div>
+<div>
+    {{ render(controller('VaeInscriptionBundle:Inscription:liste'))}}
+</div>

@@ -64,10 +64,10 @@ class Produits extends \Vae\BoutiqueBundle\Entity\Produits implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'slug', 'slugEn', 'nom', 'nomEn', 'description', 'descriptionEn', 'image', 'prix', 'disponible');
+            return array('__isInitialized__', 'id', 'nom', 'nomEn', 'slug', 'slugEn', 'description', 'descriptionEn', 'image', 'prix', 'disponible', 'vendre', 'file');
         }
 
-        return array('__isInitialized__', 'id', 'slug', 'slugEn', 'nom', 'nomEn', 'description', 'descriptionEn', 'image', 'prix', 'disponible');
+        return array('__isInitialized__', 'id', 'nom', 'nomEn', 'slug', 'slugEn', 'description', 'descriptionEn', 'image', 'prix', 'disponible', 'vendre', 'file');
     }
 
     /**
@@ -173,50 +173,6 @@ class Produits extends \Vae\BoutiqueBundle\Entity\Produits implements \Doctrine\
     }
 
     
-    /**
-     * {@inheritDoc}
-     */
-    public function setSlug($slug)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
-
-        return parent::setSlug($slug);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSlug()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
-
-        return parent::getSlug();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setSlugEn($slugEn)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlugEn', array($slugEn));
-
-        return parent::setSlugEn($slugEn);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getSlugEn()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlugEn', array());
-
-        return parent::getSlugEn();
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -384,6 +340,127 @@ class Produits extends \Vae\BoutiqueBundle\Entity\Produits implements \Doctrine\
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisponible', array());
 
         return parent::getDisponible();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setVendre($vendre)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVendre', array($vendre));
+
+        return parent::setVendre($vendre);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVendre()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVendre', array());
+
+        return parent::getVendre();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSlug($slug)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+
+        return parent::setSlug($slug);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSlug()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+
+        return parent::getSlug();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSlugEn($slugEn)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlugEn', array($slugEn));
+
+        return parent::setSlugEn($slugEn);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSlugEn()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlugEn', array());
+
+        return parent::getSlugEn();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAbsolutePath()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAbsolutePath', array());
+
+        return parent::getAbsolutePath();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getWebPath()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWebPath', array());
+
+        return parent::getWebPath();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function preUpload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'preUpload', array());
+
+        return parent::preUpload();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function upload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'upload', array());
+
+        return parent::upload();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeUpload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUpload', array());
+
+        return parent::removeUpload();
     }
 
 }

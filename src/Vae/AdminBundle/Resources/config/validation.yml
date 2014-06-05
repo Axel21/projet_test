@@ -1,0 +1,58 @@
+Vae\BaseBundle\Entity\Agendas:
+    properties:
+        titre:
+            - NotBlank: ~
+
+
+Vae\BaseBundle\Entity\Configs:
+    properties:
+        nom:
+            - NotBlank: ~
+
+
+Vae\BaseBundle\Entity\Contacts:
+    properties:
+        mail:
+            - NotBlank: ~
+        telephone:
+            - NotBlank: ~
+        adresse:
+            - NotBlank: ~
+
+
+Vae\BaseBundle\Entity\Formations:
+    properties:
+        nom:
+            - NotBlank: ~
+        description:
+            - NotBlank: ~
+        prix:
+            - NotBlank: ~
+
+
+Vae\BaseBundle\Entity\Liens:
+    properties:
+        titre:
+            - NotBlank: ~
+        titreEn:
+            - NotBlank: ~
+        url:
+            - NotBlank: ~
+
+
+Vae\BaseBundle\Entity\Rubriques:
+    properties:
+        nom:
+            - NotBlank: ~
+        contenu:
+            - NotBlank: ~
+
+
+Vae\BoutiqueBundle\Entity\Produits:
+    properties:
+        nom:
+            - NotBlank: ~
+        description:
+            - NotBlank: ~
+        prix:
+            - NotBlank: ~

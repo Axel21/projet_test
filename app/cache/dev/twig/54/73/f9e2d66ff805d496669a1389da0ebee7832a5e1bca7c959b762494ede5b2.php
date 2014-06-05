@@ -16,36 +16,40 @@ class __TwigTemplate_5473f9e2d66ff805d496669a1389da0ebee7832a5e1bca7c959b762494e
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "    <h1>Agenda</h1>
+        echo "
+    <h1><a href='";
+        // line 2
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_agenda_agenda", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))), "html", null, true);
+        echo "'>Agenda</a></h1>
     <ul id=\"agenda\">
          ";
-        // line 3
+        // line 4
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["agendas"]) ? $context["agendas"] : $this->getContext($context, "agendas")));
         foreach ($context['_seq'] as $context["_key"] => $context["agenda"]) {
-            // line 4
+            // line 5
             echo "            ";
             if (((isset($context["langue"]) ? $context["langue"] : $this->getContext($context, "langue")) == "fr")) {
-                // line 5
+                // line 6
                 echo "                <li>
                     <p>";
-                // line 6
+                // line 7
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "date"), "d/m/y"), "html", null, true);
                 echo "</p>
                     <h3><a class=\"test\" href=\"";
-                // line 7
+                // line 8
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_agenda_detail", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugAgenda" => $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "slug"))), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "titre"), "html", null, true);
                 echo "</a></h3>
              ";
             } else {
-                // line 9
+                // line 10
                 echo "                    <p>";
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "date"), "m/d/y"), "html", null, true);
                 echo "</p>
                     <h3><a class=\"test\" href=\"";
-                // line 10
+                // line 11
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_agenda_detail", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugAgenda" => $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "slugEn"))), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "titreEn"), "html", null, true);
@@ -53,18 +57,19 @@ class __TwigTemplate_5473f9e2d66ff805d496669a1389da0ebee7832a5e1bca7c959b762494e
                 </li>
              ";
             }
-            // line 13
+            // line 14
             echo "          ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['agenda'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 14
+        // line 15
         echo "    </ul>
 
 
-
-
+";
+        // line 43
+        echo "
 ";
     }
 
@@ -80,6 +85,6 @@ class __TwigTemplate_5473f9e2d66ff805d496669a1389da0ebee7832a5e1bca7c959b762494e
 
     public function getDebugInfo()
     {
-        return array (  63 => 14,  57 => 13,  49 => 10,  44 => 9,  37 => 7,  33 => 6,  30 => 5,  27 => 4,  23 => 3,  19 => 1,);
+        return array (  72 => 43,  67 => 15,  61 => 14,  41 => 8,  37 => 7,  22 => 2,  44 => 32,  56 => 36,  52 => 10,  38 => 7,  27 => 4,  23 => 3,  19 => 1,  127 => 33,  122 => 26,  111 => 29,  107 => 27,  105 => 26,  91 => 21,  85 => 18,  71 => 12,  65 => 10,  60 => 6,  54 => 5,  45 => 33,  43 => 10,  36 => 7,  34 => 6,  30 => 5,  24 => 1,  170 => 54,  163 => 51,  160 => 50,  154 => 48,  151 => 47,  146 => 45,  141 => 44,  138 => 43,  133 => 41,  128 => 40,  125 => 39,  118 => 36,  115 => 30,  109 => 33,  106 => 32,  101 => 24,  96 => 22,  93 => 28,  88 => 26,  83 => 25,  80 => 17,  78 => 16,  68 => 17,  63 => 15,  58 => 14,  53 => 11,  48 => 10,  46 => 9,  39 => 8,  35 => 5,  31 => 5,  28 => 2,);
     }
 }

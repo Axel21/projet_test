@@ -26,5 +26,38 @@ class Inscriptions
      *
      * @ORM\Column(name="payer", type="boolean", nullable=false)
      */
-    private $payer;
+  private $payer;
+  
+    
+  public function setUsers(\Vae\UserBundle\Entity\Users $users)
+  {
+    $this->users = $users;
+  }
+  
+  public function getUsers()
+  {
+    return $this->users;
+  }
+
+  public function setFormations(\Vae\BaseBundle\Entity\Formations $formations)
+  {
+    $this->formations = $formations;
+  }
+  
+  public function getFormations()
+  {
+    return $this->formations;
+  }
+
+  public function setPayer($payer)
+  {
+    $this->payer = $payer;
+  }
+  
+  public function getPayer()
+  {
+    return $this->payer;
+  }
+    
+    
 }

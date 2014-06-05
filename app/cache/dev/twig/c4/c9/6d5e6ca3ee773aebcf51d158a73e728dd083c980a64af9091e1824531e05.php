@@ -16,7 +16,7 @@ class __TwigTemplate_c4c96d5e6ca3ee773aebcf51d158a73e728dd083c980a64af9091e18245
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "
+        echo "<h1>Créations à vendre</h1>
 <ul id=\"listeProduit\">
          ";
         // line 3
@@ -53,7 +53,9 @@ class __TwigTemplate_c4c96d5e6ca3ee773aebcf51d158a73e728dd083c980a64af9091e18245
              ";
             }
             // line 12
-            echo "                    <p>image</p>
+            echo "                    <img src=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("uploads/images/" . $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "image"))), "html", null, true);
+            echo "\" />
                     <p>";
             // line 13
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "prix"), "html", null, true);
@@ -72,6 +74,9 @@ class __TwigTemplate_c4c96d5e6ca3ee773aebcf51d158a73e728dd083c980a64af9091e18245
         echo "    </ul>
 
 ";
+        // line 44
+        echo "
+";
     }
 
     public function getTemplateName()
@@ -86,6 +91,6 @@ class __TwigTemplate_c4c96d5e6ca3ee773aebcf51d158a73e728dd083c980a64af9091e18245
 
     public function getDebugInfo()
     {
-        return array (  72 => 17,  63 => 14,  59 => 13,  56 => 12,  51 => 10,  44 => 9,  39 => 7,  33 => 6,  30 => 5,  27 => 4,  23 => 3,  19 => 1,);
+        return array (  78 => 44,  74 => 17,  65 => 14,  61 => 13,  66 => 15,  56 => 12,  51 => 10,  44 => 9,  39 => 7,  33 => 6,  30 => 5,  27 => 4,  23 => 3,  19 => 1,);
     }
 }

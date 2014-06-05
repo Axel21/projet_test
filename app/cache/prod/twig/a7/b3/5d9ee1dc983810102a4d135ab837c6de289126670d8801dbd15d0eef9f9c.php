@@ -12,7 +12,9 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
         $this->blocks = array(
             'title' => array($this, 'block_title'),
             'stylesheets' => array($this, 'block_stylesheets'),
+            'body' => array($this, 'block_body'),
             'content' => array($this, 'block_content'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -36,25 +38,14 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
         echo "\" />
     </head>
     <body>
-        <nav>
-            ";
-        // line 11
-        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Rubrique:menu", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"))));
-        echo "
-        </nav>
-        
-        ";
-        // line 14
-        $this->displayBlock('content', $context, $blocks);
-        // line 15
-        echo "        
-        <aside>
-            ";
-        // line 17
-        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Agenda:liste", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"))));
-        echo "
-        </aside>
-    </body>
+       ";
+        // line 10
+        $this->displayBlock('body', $context, $blocks);
+        // line 33
+        echo "            ";
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 34
+        echo "    </body>
 </html>
 ";
     }
@@ -70,9 +61,72 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
     {
     }
 
-    // line 14
+    // line 10
+    public function block_body($context, array $blocks = array())
+    {
+        echo " 
+        <nav>
+            ";
+        // line 12
+        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Rubrique:menu", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"))));
+        echo "
+        </nav>
+        <div>     
+            
+            ";
+        // line 16
+        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            // line 17
+            echo "                <a href='";
+            echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
+            echo "'>Profile</a>
+                <a href='";
+            // line 18
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
+            echo "'>Deconnexion</a>
+ 
+            ";
+        } else {
+            // line 21
+            echo "                <a href='";
+            echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
+            echo "'>Inscription</a>
+                <a href='";
+            // line 22
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
+            echo "'>Connexion</a>
+            ";
+        }
+        // line 24
+        echo "        </div>  
+ 
+        ";
+        // line 26
+        $this->displayBlock('content', $context, $blocks);
+        // line 27
+        echo "        
+        <aside>
+            ";
+        // line 29
+        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Agenda:liste", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"))));
+        echo "
+            ";
+        // line 30
+        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listePartenaires", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : null), "nom"))));
+        echo "
+        </aside>
+        ";
+    }
+
+    // line 26
     public function block_content($context, array $blocks = array())
     {
+    }
+
+    // line 33
+    public function block_javascripts($context, array $blocks = array())
+    {
+        echo " ";
     }
 
     public function getTemplateName()
@@ -87,6 +141,6 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
 
     public function getDebugInfo()
     {
-        return array (  74 => 14,  69 => 6,  63 => 5,  50 => 15,  48 => 14,  42 => 11,  34 => 7,  32 => 6,  22 => 1,  116 => 37,  109 => 35,  106 => 34,  100 => 32,  97 => 31,  90 => 28,  87 => 27,  81 => 25,  78 => 24,  76 => 23,  68 => 18,  64 => 17,  59 => 14,  54 => 17,  49 => 11,  44 => 9,  39 => 8,  37 => 7,  31 => 3,  28 => 5,);
+        return array (  127 => 33,  122 => 26,  111 => 29,  107 => 27,  105 => 26,  91 => 21,  85 => 18,  71 => 12,  65 => 10,  60 => 6,  54 => 5,  45 => 33,  43 => 10,  36 => 7,  34 => 6,  30 => 5,  24 => 1,  170 => 54,  163 => 51,  160 => 50,  154 => 48,  151 => 47,  146 => 45,  141 => 44,  138 => 43,  133 => 41,  128 => 40,  125 => 39,  118 => 36,  115 => 30,  109 => 33,  106 => 32,  101 => 24,  96 => 22,  93 => 28,  88 => 26,  83 => 25,  80 => 17,  78 => 16,  68 => 17,  63 => 15,  58 => 14,  53 => 12,  48 => 34,  46 => 10,  39 => 6,  35 => 5,  31 => 3,  28 => 2,);
     }
 }

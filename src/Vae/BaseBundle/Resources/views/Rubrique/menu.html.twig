@@ -9,6 +9,29 @@
           {% endfor %}
     </ul>
 
+{#
+    Exemple 1 : menu, ...
+    ----------------------------------------------
 
+    Nom du Bundle: VaeBaseBundle
+    Controller: Rubrique
+    Action    : menu
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans le template de base
+        - {{ render(controller('VaeBaseBundle:Rubrique:menu', {'nomSite' : site.nom } ))}}
+
+
+    VARIABLES DISPONIBLES:
+        - rubrique: ARRAY/OBJ : 
+                     propriétés : id, nom, nomEn, slug, slugEn
+        - site.nom
+        - langue
+
+    ----------------------------------------------                
+    POUR TESTER : app_dev.php/$_locale/nom du site/slug rubrique
+    ----------------------------------------------
+#}
 
 

@@ -1,0 +1,71 @@
+{% extends "::base.html.twig" %}
+
+{% block title %} Admin{% endblock %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset("bundles/vaeadmin/css/admin.css") }}">
+    <link rel="stylesheet" href="{{ asset("bundles/vaeadmin/css/ui-darkness/jquery-ui-1.10.4.custom.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("bundles/vaeadmin/css/ui-darkness/jquery-ui-timepicker-addon.css") }}">
+    <link rel="stylesheet" href="{{ asset("bundles/vaeadmin/css/tablesorter.css") }}">
+{% endblock %}
+
+{% block body %}
+<div id="top_header_wrapper">
+	<header id="top_header" class="content">
+		<nav >
+			<h1><a href=" {{ path('admin_rubriques_index') }} ">Admin</a>:</h1>
+			<ul>
+				<li><a href="{{ path('fos_user_security_logout') }}" class="btn">deconnexion</a></li>
+				<li><a href="{{ path('vae_multi_site_accueil') }}" class="btn">retour au site</a></li>
+			</ul>
+		</nav>
+	</header>
+</div>
+
+<div id="main_wrapper">
+	<div id="main" class="content">
+		<header>
+			<h2 class="bread">admin / {% block bread %}{% endblock %}</h2>
+		</header>
+		<div id="admin_wrapper">
+			<div id="admin_menu">
+				<nav>
+				<h2>Menu</h2>
+					<ul>
+						<li><a href="{{ path('admin_rubriques_index') }}">Rubriques</a></li>
+						<li><a href="{{ path('admin_formations_index') }}">Formations</a></li>
+						<li><a href="{{ path('admin_produits_index') }}">Produits</a></li>
+						<li><a href="{{ path('admin_liens_index') }}">Liens</a></li>
+						<li><a href="{{ path('admin_agendas_index') }}">Agenda</a></li>
+						<li><a href="{{ path('admin_contacts_index') }}">Contact</a></li>
+						<li><a href="{{ path('admin_configs_index') }}">Config</a></li>
+						<li><a href="{{ path('admin_users_index') }}">Users</a></li>
+						<li><a href="{{ path('admin_achats_index') }}">Achats</a></li>
+						<li><a href="{{ path('admin_inscriptions_index') }}">Inscriptions</a></li>
+					</ul>
+				</nav>
+			</div>
+
+			<div id="admin">
+				<h2>{% block admin_title %}{% endblock %}</h2>
+				<div id="admin_table">
+					{% block admin_table %}
+
+					{% endblock %}
+				</div>
+					{% block form %}{% endblock %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('bundles/vaeadmin/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('bundles/vaeadmin/js/jquery-ui-1.10.4.custom.min.js') }}"></script>
+	<script src="{{ asset('bundles/vaeadmin/js/jquery-ui-timepicker-addon.js') }}"></script>
+	<script src="{{ asset('bundles/vaeadmin/ckeditor/ckeditor.js') }}"></script>
+	<script src="{{ asset('bundles/vaeadmin/js/jquery.tablesorter.min.js') }}"></script>
+	<script src="{{ asset('bundles/vaeadmin/js/main.js') }}"></script>
+{% endblock %}

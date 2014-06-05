@@ -1,0 +1,10 @@
+{% extends 'VaeAdminBundle::index.html.twig' %}
+{% block bread %}Inscriptions{% endblock %}
+{% block title %}Inscriptions{% endblock %}
+{% block admin_title %}Inscriptions{% endblock %}
+
+{% block admin_table -%}
+  {{ render(controller("VaeAdminBundle:Inscriptions:limit", {"page": page })) }}
+{% endblock %}
+
+

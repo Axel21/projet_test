@@ -1,0 +1,42 @@
+<h1>Partenaires</h1>
+    <ul>
+         {% for partenaire in partenaires %}
+            <li>
+                <p><a href='http://{{partenaire.url}}'>
+                    
+                    {% if langue == 'fr'%}
+                        {{partenaire.titre}}
+                    {% else %}
+                        {{partenaire.titreEn}}
+                    {% endif %}
+                        
+                </a></p>
+             </li>
+          {% endfor %}
+    </ul>
+
+{#
+    Exemple 1 : liste des partenaires par site, ...
+    ---------------------------------------------
+
+    Nom du Bundle: VaeBaseBundle
+    Controller: Liens
+    Action    : listePartenaires
+    ----------------------------------------------
+
+    A INTEGRER : 
+        - dans le template de base
+        - {{ render(controller('VaeBaseBundle:Liens:listePartenaires', {'nomSite' : site.nom } ))}}
+
+    VARIABLES DISPONIBLES:
+        - partenaire: ARRAY/OBJ : 
+                     propriétés : id, titre, titreEn, url
+        - langue
+       
+
+    ----------------------------------------------                
+    POUR TESTER : app_dev.php/$_locale/nom du site/slug rubrique
+    ----------------------------------------------
+#}
+
+

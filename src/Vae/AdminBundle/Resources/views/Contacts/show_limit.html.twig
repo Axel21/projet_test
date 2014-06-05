@@ -1,0 +1,46 @@
+<table class="tablesorter">
+    <thead>
+        <tr>
+            <th>mail</th>
+            <th>telephone</th>
+            <th>adresse</th>
+            <th>action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for entity in entities %}
+    	<tr>
+    		<td>{{ entity.mail|length > 15 ? entity.mail[:15] ~ '...' : entity.mail }}</td>
+            <td>{{ entity.telephone|length > 15 ? entity.telephone[:15] ~ '...' : entity.telephone }}</td>
+            <td>{{ entity.adresse|length > 15 ? entity.adresse[:15] ~ '...' : entity.adresse }}</td>
+
+            <td>
+                <ul>
+                    <li><a class="btn btn-small" href="{{ path('admin_contacts_index_update', { 'id':entity.id, 'page': page}) }}">editer</a></li>
+                    <li><a class="btn btn-small" href="{{ path('admin_contacts_delete', { 'id': entity.id }) }}">suppr</a></li>
+                </ul>
+            </td>
+    	</tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+    <div id="table_info">
+        <ul id="pagination">
+        {% for list_page in range(page - 4, page + 4) %}
+        {% if list_page > 0 and list_page <= count_page %}
+        	{% if list_page == page %}
+				<li class="active">{{ page }}</li>
+        	{% else %}
+        	<li><a href="{{ path('admin_contacts_index', {'page': list_page}) }}">{{ list_page }}</a></li>
+        	{% endif %}
+        		
+        {% endif %}
+        {% endfor %}
+        </ul>
+        <div class="wrap_button">
+            <a href="{{ path('admin_contacts_index_add', {'page': page}) }}" class="btn btn_small">Ajouter</a>
+        </div>
+	</div>
+

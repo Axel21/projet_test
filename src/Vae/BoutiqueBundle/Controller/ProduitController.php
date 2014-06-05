@@ -4,10 +4,73 @@ namespace Vae\BoutiqueBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-
+use Vae\BoutiqueBundle\Entity\Paypal;
+use Vae\BoutiqueBundle\Entity\Achats;
 
 
 class ProduitController extends controller {
+    
+        public function galerieAction($_locale, $nomSite, $slugRubrique){
+        
+        //on va chercher dans la base de données
+        $modelManager = $this->getDoctrine()->getManager();
+        
+        $rSite = $modelManager->getRepository('VaeMultiSiteBundle:Sites')->findOneByNom($nomSite);
+        
+        if(!$rSite){
+            
+            throw $this->createNotFoundException('This page does not exist.');
+        }
+        
+        
+        
+        if($_locale == 'fr'){
+        
+        $rRubrique = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findOneBy(array('sites'=>$rSite->getId(),
+                                                                                              'slug'=>$slugRubrique));
+        $rsProduits = $modelManager->createQueryBuilder()
+                                        ->select('p')
+                                        ->from('VaeBoutiqueBundle:Produits', 'p')
+                                        ->where('p.vendre = 0')
+                                        ->getQuery()
+                                        ->getResult();
+
+        }
+        
+        else{
+        
+        $rRubrique = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findOneBy(array('sites'=>$rSite->getId(),
+                                                                                              'slugEn'=>$slugRubrique));
+        $rsProduits = $modelManager->createQueryBuilder()
+                                        ->select('p')
+                                        ->from('VaeBoutiqueBundle:Produits', 'p')
+                                        ->where('p.slugEn IS NOT NULL')
+                                        ->andWhere('p.vendre = 0')
+                                        ->getQuery()
+                                        ->getResult();
+        }
+        
+        if(!$rRubrique){
+            
+            throw $this->createNotFoundException('This page does not exist.');
+        }
+        
+        
+        if(!$rsProduits){
+            
+            //throw $this->createNotFoundException('This page does not exist.');
+            
+            return $this->render('VaeBoutiqueBundle:Produit:aucun.html.twig');
+        }
+        
+        //on charge la vue et on lui envoi la liste des produits
+
+        return $this->render('VaeBoutiqueBundle:Produit:galerie.html.twig',
+                array('produits' => $rsProduits,
+                      'rubrique' => $rRubrique,
+                      'site' => $rSite,
+                      'langue' => $_locale));
+    }
     
     public function indexAction($_locale, $nomSite, $slugRubrique){
         
@@ -27,7 +90,12 @@ class ProduitController extends controller {
         
         $rRubrique = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findOneBy(array('sites'=>$rSite->getId(),
                                                                                               'slug'=>$slugRubrique));
-        $rsProduits = $modelManager->getRepository('VaeBoutiqueBundle:Produits')->findAll();
+        $rsProduits = $modelManager->createQueryBuilder()
+                                        ->select('p')
+                                        ->from('VaeBoutiqueBundle:Produits', 'p')
+                                        ->where('p.vendre = 1')
+                                        ->getQuery()
+                                        ->getResult();
 
         }
         
@@ -39,6 +107,7 @@ class ProduitController extends controller {
                                         ->select('p')
                                         ->from('VaeBoutiqueBundle:Produits', 'p')
                                         ->where('p.slugEn IS NOT NULL')
+                                        ->andWhere('p.vendre = 1')
                                         ->getQuery()
                                         ->getResult();
         }
@@ -108,21 +177,187 @@ class ProduitController extends controller {
             throw $this->createNotFoundException('This page does not exist.');
         }
         
+        if($rProduit->getVendre() == 1){
+            
+            if($_locale == 'fr'){
+            
+                $nom = $rProduit->getNom();
+                $description = $rProduit->getDescription();
+
+            }
+            else{
+            
+                $nom = $rProduit->getNomEn();
+                $description = $rProduit->getDescriptionEn();
+
+            }
         
+            $id = $rProduit->getId();
+            $prix = $rProduit->getPrix();
         
-        //on charge la vue et on lui envoi la liste des catégories
-        return $this->render('VaeBoutiqueBundle:Produit:detail.html.twig',
-                array('produit' => $rProduit,
-                      'rubrique' => $rRubrique,
-                      'site' => $rSite,
-                      'langue' => $_locale));
+            $paypal = new Paypal();
+        
+            $params = array(
+            
+                'RETURNURL' => "http://127.0.0.1/projet_soleil/web/app_dev.php/paypal/process",
+                'CANCELURL' => "http://127.0.0.1/projet_soleil/web/app_dev.php/paypal/cancel",
+            
+                'PAYMENTREQUEST_0_AMT' => $prix,
+                'PAYMENTREQUEST_0_CURRENCYCODE' => 'EUR',
+                'PAYMENTREQUEST_0_CUSTOM' => $id,
+            
+                'L_PAYMENTREQUEST_0_NAME0' => $nom,
+                'L_PAYMENTREQUEST_0_AMT0' => $prix,
+                'L_PAYMENTREQUEST_0_DESC0' => $description,
+               
+            );
+        
+            $responseSet = $paypal->request('SetExpressCheckout', $params);
+        
+            if($responseSet){
+            
+                $paypal = 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&useraction=commit&token='.$responseSet['TOKEN'];
+            }
+        
+            else{
+            
+                /*var_dump($paypal->errors);
+                die();*/
+            
+                return $this->render('VaeBoutiqueBundle:Produit:error.html.twig');
+            }
+        
+       
+            //on charge la vue et on lui envoi la liste des catégories
+            return $this->render('VaeBoutiqueBundle:Produit:detail.html.twig',
+                    array('produit' => $rProduit,
+                          'rubrique' => $rRubrique,
+                          'site' => $rSite,
+                          'langue' => $_locale,
+                          'paypal' => $paypal));
+        }
+        
+        else{
+            
+            return $this->render('VaeBoutiqueBundle:Produit:galeriedetail.html.twig',
+                    array('produit' => $rProduit,
+                          'rubrique' => $rRubrique,
+                          'site' => $rSite,
+                          'langue' => $_locale));
+        }
+        
+ 
     }
     
     
-    public function successAction(){
+    public function processAction(){
         
-        //on charge la vue et on lui envoi la liste des catégories
-        return $this->render('VaeBoutiqueBundle:Produit:success.html.twig');
+        $paypal = new Paypal();
+         
+        $responseGet = $paypal->request('GetExpressCheckoutDetails', array(
+            
+            'TOKEN' => $_GET['token']
+        ));
+        
+        if($responseGet){
+            
+            if($responseGet['CHECKOUTSTATUS'] == 'PaymentActionCompleted'){
+                
+               //var_dump($responseGet);
+
+                return $this->render('VaeBoutiqueBundle:Produit:error2.html.twig');
+            }
+            else{
+                
+            }
+        }
+        
+        else{
+            
+            /*var_dump($paypal->errors);
+            die();*/
+            
+            return $this->render('VaeBoutiqueBundle:Produit:error3.html.twig');
+        }
+        
+        /*var_dump($responseGet);
+        die();*/
+        
+        $modelManager = $this->getDoctrine()->getManager();
+        
+        $rProduit = $modelManager->getRepository('VaeBoutiqueBundle:Produits')->findOneBy(array('id' =>$responseGet['CUSTOM']));
+        
+        if(!$rProduit){
+            
+            return $this->render('VaeBoutiqueBundle:Produit:error.html.twig');
+        }
+        
+        $nom = $rProduit->getNom();
+        $description = $rProduit->getDescription();
+        $prix = $rProduit->getPrix();
+        $id = $rProduit->getId();
+        $adresse = array(
+                    
+            $responseGet['SHIPTOSTREET'],
+            $responseGet['SHIPTOZIP'],
+            $responseGet['SHIPTOCITY'],
+            $responseGet['SHIPTOCOUNTRYNAME'],
+            $responseGet['SHIPTOCOUNTRYCODE']
+        );
+        
+        $params = array(
+            
+            'TOKEN' => $_GET['token'],
+            'PAYERID' => $_GET['PayerID'],
+            'PAYMENTACTION' => 'Sale',
+            'PAYMENTREQUEST_0_CURRENCYCODE' => 'EUR',
+            'PAYMENTREQUEST_0_AMT' => $responseGet['PAYMENTREQUEST_0_AMT'],
+            'PAYMENTREQUEST_0_ITEMAMT' => $prix,
+            
+            'L_PAYMENTREQUEST_0_NAME0' => $nom,
+            'L_PAYMENTREQUEST_0_AMT0' => $prix,
+            'L_PAYMENTREQUEST_0_DESC0' => $description,
+            
+        );
+        
+        $responseDo = $paypal->request('DoExpressCheckoutPayment',$params);
+        
+        if($responseDo){
+            
+            /*var_dump($responseDo);*/
+            
+            
+            $rUdProduit = $modelManager->createQueryBuilder()
+                                    ->update('VaeBoutiqueBundle:Produits', 'u')
+                                    ->set('u.disponible', ':Zero')
+                                    ->where('u.id = :Id')
+                                    ->setParameter('Zero', '0')
+                                    ->setParameter('Id', $id)
+                                    ->getQuery()
+                                    ->execute();
+            
+            $achat = new Achats();
+            $achat->setTransaction($responseDo['PAYMENTINFO_0_TRANSACTIONID']);
+            $achat->setProduit($nom);
+            $achat->setClient($responseGet['SHIPTONAME']);
+            $achat->setEmail($responseGet['EMAIL']);
+            $achat->setDate($responseDo['TIMESTAMP']);
+            $achat->setAdresse($adresse);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($achat);
+            $em->flush();
+         
+            return $this->render('VaeBoutiqueBundle:Produit:success.html.twig');
+        }
+        
+        else{
+            
+            /*var_dump($paypal->errors);
+            die();*/
+            return $this->render('VaeBoutiqueBundle:Produit:error3.html.twig');
+        }
+        
     }
     
     public function cancelAction(){
@@ -130,115 +365,7 @@ class ProduitController extends controller {
         //on charge la vue et on lui envoi la liste des catégories
         return $this->render('VaeBoutiqueBundle:Produit:cancel.html.twig');
     }
-    
-    public function ipnAction(){
-        
-            $email_account = "axel_wilhelmus@gmail.com";
-
-            // lire le formulaire provenant du système PayPal et ajouter 'cmd'
-            $req = 'cmd=_notify-validate';
-    
-            foreach ($_POST as $key => $value) {
-                $value = urlencode(stripslashes($value));
-                $req .= "&$key=$value";
-            }
-            
-           // renvoyer au système PayPal pour validation
-            $header = "POST /cgi-bin/webscr HTTP/1.0\r\n";
-            $header .= "Host: www.sandbox.paypal.com\r\n";
-            $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
-            $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
-            $fp = \fsockopen ('ssl:www.sandbox.paypal.com', 80, $errno, $errstr, 30);
-            
-            $item_name = $_POST['item_name'];
-            $item_number = $_POST['item_number'];
-            $payment_status = $_POST['payment_status'];
-            $payment_amount = $_POST['mc_gross'];
-            $payment_currency = $_POST['mc_currency'];
-            $txn_id = $_POST['txn_id'];
-            $receiver_email = $_POST['receiver_email'];
-            $payer_email = $_POST['payer_email'];
-            $id_produit = $_POST['custom'];
-            
-                if (!$fp) {
-                    // ERREUR HTTP
-                } 
-                
-                else {
-                    
-                    fputs ($fp, $header . $req);
-                    
-                    while (!feof($fp)) {
-                    
-                        $res = fgets ($fp, 1024);
-                
-                        if (strcmp ($res, "VERIFIED") == 0) {
-                            // transaction valide
-                            
-                            // vérifier que payment_status a la valeur Completed
-                            if ( $payment_status == "Completed") {
-                                
-                                // vérifier que txn_id n'a pas été précédemment traité: Créez une fonction qui va interroger votre base de données
-                              //if (VerifIXNID($txn_id) == 0) {
-                                
-                                    // vérifier que receiver_email est votre adresse email PayPal principale
-                                    if ( $email_account == $receiver_email) {
-                                        // vérifier que payment_amount et payment_currency sont corrects
-                                         /*$modelManager = $this->getDoctrine()->getManager();
-                           
-                                         $rProduit = $modelManager->getRepository('VaeBoutiqueBundle:Produits')->findOneBy(array('id'=>$id_produit));
-                                         
-                                         if($payment_amount == $rProduit->getPrix()){
-                                             
-                                             $updateProduit = $modelManager->createQueryBuilder()            
-                                                                           ->update('VaeBaseBundle:Formations', 'u')
-                                                                           ->set('u.disponible', ':Dispo')
-                                                                           ->where('u.id = :Id')
-                                                                           ->setParameter('Id', $rProduit->getId())
-                                                                           ->setParameter('Dispo', '0')
-                                                                           ->getQuery()
-                                                                           ->execute();
-                                         }*/
-                                        
-                                      file_put_contents('log', print_r($_POST));
-                                        
-                                        $product = new Produits();
-                                        $product->setNom('A Foo Bar');
-                                        $product->setPrix('19.99');
-                                        $product->setDescription('Lorem ipsum dolor');
-
-                                        $em = $this->getDoctrine()->getManager();
-                                        $em->persist($product);
-                                        $em->flush();
-                                    }
-                                    
-                                    else {
-                                        // Mauvaise adresse email paypal
-                                    }
-                                //}
-                                
-                             // else {
-				// ID de transaction déjà utilisé
-                            //} 
-                                    
-                            }
-		  
-                            else {
-		        	// Statut de paiement: Echec
-                            }
-                        }
-                    
-                        else if (strcmp ($res, "INVALID") == 0) {
-                            // Transaction invalide                
-                        }
-                    }
-        
-                    fclose ($fp);
-                
-                }
-    }
-    
-    
+      
 }
 
 ?>
