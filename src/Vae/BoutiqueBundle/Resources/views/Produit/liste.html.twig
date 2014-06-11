@@ -1,20 +1,42 @@
-<h1>Créations à vendre</h1>
-<ul id="listeProduit">
-         {% for produit in produits %}
-            {% if langue == 'fr'%}
-                <li>
-                    <h3><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}">{{produit.nom}}</a></h3>
-                    <p>{{produit.description}}</p>
-             {% else %}
-                    <h3><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}">{{produit.nomEn}}</a></h3>
-                    <p>{{produit.descriptionEn}}</p>
-             {% endif %}
-                    <img src="{{ asset('uploads/images/'~produit.image) }}" />
-                    <p>{{produit.prix}}</p>
-                    <p>{{produit.disponible}}</p>
-                </li>
-          {% endfor %}
-    </ul>
+<div class="container-fluid">
+<div class="row-fluid">
+<div class="col-md-9">
+    <h1>Création à vendre</h1>
+    <div class="carousel slide" id="myCarousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                    <ul class="thumbnails">
+                        {% for produit in produits %}
+                        <li class="col-md-3">
+                            <div class="thumbnail">
+                                {% if langue == 'fr'%}
+                                  <p class="col-md-9">{{produit.nom}}</p>
+                                  <a href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}"><a>
+                                 {% else %}
+                                  <p class="col-md-9">{{produit.nomEn}}</p>
+                                  <a href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}"></a>
+                                 {% endif %}
+                            </div>
+                            
+                        </li>
+                        {% endfor %}
+                    </ul>
+              </div><!-- /Slide1 --> 
+            
+            
+             
+        </div>
+        
+       {# <div class="control-box">                            
+            <a data-slide="prev" href="#myCarousel" class="carousel-control left">‹</a>
+            <a data-slide="next" href="#myCarousel" class="carousel-control right">›</a>
+        </div><!-- /.control-box -->   #}
+                              
+    </div><!-- /#myCarousel -->
+        
+</div><!-- /.span12 -->          
+</div><!-- /.row --> 
+</div><!-- /.container -->
 
 {#
     Exemple 1 : detail de produit en vente

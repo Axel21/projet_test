@@ -35,29 +35,29 @@ class __TwigTemplate_28bc798906daa2c9d3ce484f10f3509f15709413e8f51910e62830ed309
         // line 6
         if (((isset($context["langue"]) ? $context["langue"] : $this->getContext($context, "langue")) == "fr")) {
             // line 7
-            echo "            <h2><a class=\"test\" href=\"#\">";
+            echo "            <h2>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "nom"), "html", null, true);
-            echo "</a></h2>
+            echo "</h2>
             <p>";
             // line 8
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "description"), "html", null, true);
+            echo $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "description");
             echo "</p>      
         ";
         } else {
             // line 10
-            echo "            <h2><a href=\"#\">";
+            echo "            <h2>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "nomEn"), "html", null, true);
-            echo "</a></h2>
+            echo "</h2>
             <p>";
             // line 11
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "descriptionEn"), "html", null, true);
+            echo $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "descriptionEn");
             echo "</p>
         ";
         }
         // line 13
         echo "            <img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("uploads/images/" . $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "image"))), "html", null, true);
-        echo "\" />
+        echo "\" /><br/><br/>
        
             ";
         // line 15

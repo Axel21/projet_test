@@ -5,20 +5,21 @@
     <div>
         {% if langue == 'fr'%}
             <h2><a class="test" href="#">{{produit.nom}}</a></h2>
-            <p>{{produit.description}}</p>      
+            <img src="{{ asset('uploads/images/'~produit.image) }}" />
+            <p>{{produit.description|raw}}</p>      
         {% else %}
             <h2><a href="#">{{produit.nomEn}}</a></h2>
-            <p>{{produit.descriptionEn}}</p>
-        {% endif %}
             <img src="{{ asset('uploads/images/'~produit.image) }}" />
-            <p>{{produit.prix}}</p>
-            <p>{{produit.disponible}}</p>
+            <p>{{produit.descriptionEn|raw}}</p>
+        {% endif %}
+            <p>{{produit.prix}}€ TTC</p>
             {% if produit.disponible == '1'%}
-                <a href='{{paypal}}'>Acheter</a>
+                <a href='{{paypal}}'><input type="image" src="http://www.paypal.com/fr_FR/i/btn/x-click-but01.gif" border="0" name="submit" alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée"></a>
             {% else %}
                 <p>ce produit n'est plus disponible</p>
             {% endif %}
-   
+            <br/><br/>
+
             
             
             {% if langue == 'fr'%}

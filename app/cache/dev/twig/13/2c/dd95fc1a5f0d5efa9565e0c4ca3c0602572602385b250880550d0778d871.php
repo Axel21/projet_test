@@ -7,7 +7,7 @@ class __TwigTemplate_132cdd95fc1a5f0d5efa9565e0c4ca3c0602572602385b250880550d077
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::base.html.twig");
+        $this->parent = $this->env->loadTemplate("::base2.html.twig");
 
         $this->blocks = array(
             'title' => array($this, 'block_title'),
@@ -23,7 +23,7 @@ class __TwigTemplate_132cdd95fc1a5f0d5efa9565e0c4ca3c0602572602385b250880550d077
 
     protected function doGetParent(array $context)
     {
-        return "::base.html.twig";
+        return "::base2.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())

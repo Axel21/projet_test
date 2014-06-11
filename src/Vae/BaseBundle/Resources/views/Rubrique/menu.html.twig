@@ -1,15 +1,32 @@
+        <section class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            {% for rubrique in rubriques %}
+                {% if langue == 'fr'%}
+                    <li><a class="test" href="{{path('vae_base_rubrique_detail',{'nomSite': site.nom, 'slugRubrique': rubrique.slug})}}">{{rubrique.nom}}</a></li>
+                {% else %}
+                    <li><a class="test" href="{{path('vae_base_rubrique_detail',{'nomSite': site.nom, 'slugRubrique': rubrique.slugEn})}}">{{rubrique.nomEn}}</a></li>
+                {% endif %}
+            {% endfor %}
+            <li><p>
+                   <a href="{{ path("vae_base_rubrique_detail", { '_locale': 'fr', 'nomSite': site.nom, 'slugRubrique': thisRub.slug}) }}">Fr</a> -
+                   <a href="{{ path("vae_base_rubrique_detail", { '_locale': 'en', 'nomSite': site.nom, 'slugRubrique': thisRub.slugEn}) }}">En</a>
+                </p>
+                <p>  
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <p id="test"><a href='{{ path('fos_user_profile_show')}}'>Profile</a><p>
+                        <p id="test"><a href='{{ path('fos_user_security_logout')}}'>Deconnexion</a><p>
+                    {% else %}
+                        <p id="test"><a href='{{ path('fos_user_registration_register')}}'>Inscription</a><p>
+                        <p id="test"><a href='{{ path('fos_user_security_login')}}'>Connexion</a><p>
+                    {% endif %}
+                </p>
+ 
+            </li>
+          </ul>
+        </section><!--/.nav-collapse -->
 
-    <ul id="menu">
-         {% for rubrique in rubriques %}
-            {% if langue == 'fr'%}
-                <li><a class="test" href="{{path('vae_base_rubrique_detail',{'nomSite': site.nom, 'slugRubrique': rubrique.slug})}}">{{rubrique.nom}}</a></li>
-             {% else %}
-                <li><a class="test" href="{{path('vae_base_rubrique_detail',{'nomSite': site.nom, 'slugRubrique': rubrique.slugEn})}}">{{rubrique.nomEn}}</a></li>
-             {% endif %}
-          {% endfor %}
-    </ul>
 
-{#
+   {#
     Exemple 1 : menu, ...
     ----------------------------------------------
 

@@ -4,13 +4,13 @@
                                             
     <div>
         {% if langue == 'fr'%}
-            <h2><a class="test" href="#">{{produit.nom}}</a></h2>
-            <p>{{produit.description}}</p>      
+            <h2>{{produit.nom}}</h2>
+            <p>{{produit.description|raw}}</p>      
         {% else %}
-            <h2><a href="#">{{produit.nomEn}}</a></h2>
-            <p>{{produit.descriptionEn}}</p>
+            <h2>{{produit.nomEn}}</h2>
+            <p>{{produit.descriptionEn|raw}}</p>
         {% endif %}
-            <img src="{{ asset('uploads/images/'~produit.image) }}" />
+            <img src="{{ asset('uploads/images/'~produit.image) }}" /><br/><br/>
        
             {% if langue == 'fr'%}
             <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug } )}}'>Retour à la liste</a></p>

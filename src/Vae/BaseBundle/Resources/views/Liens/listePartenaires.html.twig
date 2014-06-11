@@ -1,19 +1,21 @@
-<h1>Partenaires</h1>
+
+<nav>
+    <h2>Partenaires</h2>
     <ul>
-         {% for partenaire in partenaires %}
-            <li>
-                <p><a href='http://{{partenaire.url}}'>
-                    
-                    {% if langue == 'fr'%}
-                        {{partenaire.titre}}
-                    {% else %}
-                        {{partenaire.titreEn}}
-                    {% endif %}
-                        
-                </a></p>
-             </li>
-          {% endfor %}
+        {% for partenaire in partenaires %}
+        <li><a href="http://{{partenaire.url}}">
+                
+            {% if langue == 'fr'%}
+                {{partenaire.titre}}
+            {% else %}
+                {{partenaire.titreEn}}
+            {% endif %}
+            
+            </a>
+       </li>
+        {% endfor %}
     </ul>
+</nav>
 
 {#
     Exemple 1 : liste des partenaires par site, ...

@@ -28,48 +28,57 @@ class __TwigTemplate_56b3d0d281b09358c41ec3c3cc2cd6e8a7a87abd0dc11fc354bf9b89d6e
     public function block_content($context, array $blocks = array())
     {
         // line 3
-        echo "<article>
-            ";
-        // line 4
+        echo "<section id=\"left-content\" >
+<section class=\"col-md-9\">
+ 
+    <article>
+     
+        <h2>Agenda - Détail</h2>
+         <article>
+             ";
+        // line 10
         if (((isset($context["langue"]) ? $context["langue"] : $this->getContext($context, "langue")) == "fr")) {
-            // line 5
-            echo "                    <h4>";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "titre"), "html", null, true);
-            echo "</h4>
-                    <p>";
-            // line 6
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "contenu"), "html", null, true);
-            echo "</p>
-                    <p>";
-            // line 7
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "date"), "d/m/y"), "html", null, true);
-            echo "</p>
-                    <p><a href='";
-            // line 8
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_rubrique_detail", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => "accueil")), "html", null, true);
-            echo "'>Retour</a></p>
-             ";
-        } else {
-            // line 10
-            echo "                    <h4>";
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "titreEn"), "html", null, true);
-            echo "</h4>
-                    <p>";
             // line 11
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "contenuEn"), "html", null, true);
-            echo "</p>
-                    <p>";
+            echo "              <header>
+              <h1>";
             // line 12
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "date"), "m/d/y"), "html", null, true);
-            echo "</p>
-                    <p><a href='";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "titre"), "html", null, true);
+            echo "</h1>
+              <time>";
             // line 13
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_rubrique_detail", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => "home")), "html", null, true);
-            echo "'>Back</a></p>
-             ";
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "date"), "d/m/y"), "html", null, true);
+            echo "</time>
+              </header>
+              <p>";
+            // line 15
+            echo $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "contenu");
+            echo "</p>
+             </article>
+              ";
+        } else {
+            // line 18
+            echo "              <header>
+              <h1>";
+            // line 19
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "titreEn"), "html", null, true);
+            echo "</h1>
+              <time>";
+            // line 20
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "date"), "m/d/y"), "html", null, true);
+            echo "</time>
+              </header>
+              <p>";
+            // line 22
+            echo $this->getAttribute((isset($context["agenda"]) ? $context["agenda"] : $this->getContext($context, "agenda")), "contenuEn");
+            echo "</p>
+              </article>
+              ";
         }
-        // line 15
-        echo "</article>
+        // line 25
+        echo "        </article>
+        
+</section>
+</section><!--end left-content-->
 ";
     }
 
@@ -85,6 +94,6 @@ class __TwigTemplate_56b3d0d281b09358c41ec3c3cc2cd6e8a7a87abd0dc11fc354bf9b89d6e
 
     public function getDebugInfo()
     {
-        return array (  72 => 15,  67 => 13,  63 => 12,  59 => 11,  54 => 10,  49 => 8,  45 => 7,  41 => 6,  36 => 5,  34 => 4,  31 => 3,  28 => 2,);
+        return array (  78 => 25,  72 => 22,  67 => 20,  63 => 19,  60 => 18,  54 => 15,  49 => 13,  45 => 12,  42 => 11,  40 => 10,  31 => 3,  28 => 2,);
     }
 }

@@ -69,7 +69,7 @@ class InscriptionsController extends BaseController
         $em = $this->getDoctrine()->getManager();
         $sql ="SELECT payer FROM inscriptions WHERE users_id = $id AND formations_id = $id2";
         $request = $em->getConnection()->query( $sql );
-        $payer = $request->fetch()['payer'];
+        $payer = $request->fetch(['payer']);
         if($payer == '1'){
             $sql = "UPDATE inscriptions SET payer= 0 WHERE users_id = $id and formations_id = $id2";
         }

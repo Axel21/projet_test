@@ -28,43 +28,34 @@ class __TwigTemplate_89c5ec0aabc31a3e3aa6742b9dad090a79d551b29ea911e6378ec7aceab
     public function block_content($context, array $blocks = array())
     {
         // line 3
-        echo "<article>
-    <div>
-        <a href=\"";
-        // line 5
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_rubrique_detail", array("_locale" => "fr", "nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug"))), "html", null, true);
-        echo "\">Francais</a>
-        <a href=\"";
-        // line 6
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_rubrique_detail", array("_locale" => "en", "nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn"))), "html", null, true);
-        echo "\">Anglais</a>   
-    </div>
+        echo "    
+<article>
                                             
     <div>
         ";
-        // line 10
+        // line 7
         if (((isset($context["langue"]) ? $context["langue"] : $this->getContext($context, "langue")) == "fr")) {
-            // line 11
-            echo "            <h2><a href=\"#\">";
+            // line 8
+            echo "            <h2>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "nom"), "html", null, true);
-            echo "</a></h2>
+            echo "</h2>
             <p>";
-            // line 12
+            // line 9
             echo $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "contenu");
             echo "</p>
         ";
         } else {
-            // line 14
-            echo "            <h2><a href=\"#\">";
+            // line 11
+            echo "            <h2>";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "nomEn"), "html", null, true);
-            echo "</a></h2>
+            echo "</h2>
             <p>";
-            // line 15
+            // line 12
             echo $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "contenuEn");
             echo "</p>
         ";
         }
-        // line 17
+        // line 14
         echo "            <img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(("uploads/images/" . $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "image"))), "html", null, true);
         echo "\" />
@@ -74,100 +65,101 @@ class __TwigTemplate_89c5ec0aabc31a3e3aa6742b9dad090a79d551b29ea911e6378ec7aceab
 </article>
 <div>
 ";
-        // line 23
+        // line 20
         if (((isset($context["langue"]) ? $context["langue"] : $this->getContext($context, "langue")) == "fr")) {
-            // line 24
+            // line 21
             echo "    ";
             if ((($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug") == "formations") || ($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug") == "ateliers"))) {
-                // line 25
+                // line 22
                 echo "        ";
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Formation:index", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug"))));
                 echo "
         ";
-                // line 26
+                // line 23
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
                 echo "
     ";
             }
-            // line 28
+            // line 25
             echo "    ";
             if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug") == "boutique")) {
-                // line 29
+                // line 26
                 echo "        ";
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBoutiqueBundle:Produit:galerie", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug"))));
                 echo "
         ";
-                // line 30
+                // line 27
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBoutiqueBundle:Produit:index", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug"))));
+                echo "
+    ";
+            }
+            // line 29
+            echo "    ";
+            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug") == "accueil")) {
+                // line 30
+                echo "        ";
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
                 echo "
     ";
             }
             // line 32
             echo "    ";
-            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug") == "accueil")) {
-                // line 33
-                echo "        ";
-                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
-                echo "
-    ";
-            }
-            // line 35
-            echo "    ";
             if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug") == "contact")) {
-                // line 36
+                // line 33
                 echo "        ";
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Contact:form", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug"))));
                 echo "
     ";
             }
         } else {
-            // line 39
+            // line 36
             echo "    ";
             if ((($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn") == "trainings") || ($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn") == "workshop"))) {
-                // line 40
+                // line 37
                 echo "        ";
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Formation:index", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn"))));
                 echo "
         ";
-                // line 41
+                // line 38
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
                 echo "
     ";
             }
-            // line 43
+            // line 40
             echo "    ";
             if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn") == "shop")) {
-                // line 44
+                // line 41
                 echo "        ";
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBoutiqueBundle:Produit:galerie", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn"))));
                 echo "
         ";
-                // line 45
+                // line 42
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBoutiqueBundle:Produit:index", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn"))));
+                echo "
+    ";
+            }
+            // line 44
+            echo "    ";
+            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn") == "home")) {
+                // line 45
+                echo "        ";
+                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
                 echo "
     ";
             }
             // line 47
             echo "    ";
-            if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn") == "home")) {
-                // line 48
-                echo "        ";
-                echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listeVideos", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
-                echo "
-    ";
-            }
-            // line 50
-            echo "    ";
             if (($this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn") == "contact")) {
-                // line 51
+                // line 48
                 echo "        ";
                 echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Contact:form", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn"))));
                 echo "
     ";
             }
         }
-        // line 54
+        // line 51
         echo "</div>
+
 ";
     }
 
@@ -183,6 +175,6 @@ class __TwigTemplate_89c5ec0aabc31a3e3aa6742b9dad090a79d551b29ea911e6378ec7aceab
 
     public function getDebugInfo()
     {
-        return array (  170 => 54,  163 => 51,  160 => 50,  154 => 48,  151 => 47,  146 => 45,  141 => 44,  138 => 43,  133 => 41,  128 => 40,  125 => 39,  118 => 36,  115 => 35,  109 => 33,  106 => 32,  101 => 30,  96 => 29,  93 => 28,  88 => 26,  83 => 25,  80 => 24,  78 => 23,  68 => 17,  63 => 15,  58 => 14,  53 => 12,  48 => 11,  46 => 10,  39 => 6,  35 => 5,  31 => 3,  28 => 2,);
+        return array (  161 => 51,  154 => 48,  151 => 47,  145 => 45,  142 => 44,  137 => 42,  132 => 41,  129 => 40,  124 => 38,  119 => 37,  116 => 36,  109 => 33,  106 => 32,  100 => 30,  97 => 29,  92 => 27,  87 => 26,  84 => 25,  79 => 23,  74 => 22,  71 => 21,  69 => 20,  59 => 14,  54 => 12,  49 => 11,  44 => 9,  39 => 8,  37 => 7,  31 => 3,  28 => 2,);
     }
 }

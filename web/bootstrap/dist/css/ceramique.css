@@ -1,0 +1,366 @@
+ /*---------------------------------------------------
+           MES IMPORTS POUR LE RESPONSIVE
+-----------------------------------------------------*/
+ @import url('structure_medium.css') screen and (max-width: 700px);
+ @import url('structure_small.css') screen and (max-width: 480px);
+/*---------------------------------------------------
+                  MES POLICES
+-----------------------------------------------------*/
+
+/*-------------------------------------------------
+                 règlage générales
+---------------------------------------------------*/
+body, h1, h2, h3{
+	font-family: 'Alegreya Sans', sans-serif;
+	
+	font-style: bold;
+}
+
+
+/*--------------------------------------------------
+  margin et padding a 0 et centré
+-----------------------------------------------------*/
+#fondheader h1{
+	margin:0;
+}
+article p{
+	margin: 0;
+	padding: 0;
+}
+#content-center, .footer-center{
+	margin: 0 auto;
+	padding: 0;
+	float: none;
+	
+}
+.menu-center{
+	margin: 0 auto;
+	padding: 0;
+	float: none;
+}
+#left-content .col-md-9, #right-content .col-md-3{
+	padding: 0;
+	margin: 0;
+}
+#footer, #content{
+	margin: 0;
+	padding: 0;
+}
+/*-------------------------------------
+              MENU
+----------------------------------------*/
+.menu-center{
+	background: #fff;
+	border-bottom: 5px solid #CC490B;
+}
+.navbar-header{
+	margin: 0;
+	padding: 0;
+}
+.navbar-brand{
+	margin: 0;
+	padding: 0;
+}
+.navbar-brand img{
+	width: 130px;
+	
+	margin-left: 20px;
+}
+.navbar-collapse ul li a{
+	font-size: 1.5em;
+	letter-spacing: 2px;
+	color:#CC490B;
+	font-weight: bold;
+	word-spacing: 10px;
+	margin-top: 20px;
+	
+}
+.navbar-collapse ul li a:hover{
+	border-bottom: 5px solid #533211;
+}
+.navbar-collapse ul{
+	margin: 0;
+}
+.navbar-collapse ul li{
+	margin-right: 20px
+}
+.navbar-collapse .active{
+	border-bottom: 5px solid #533211;
+}
+.navbar-collapse .active:hover{
+	border-bottom: none;
+}
+.navbar h1{
+	margin: 0;
+}
+/*-------------------------------------
+                   HEADER
+--------------------------------------*/
+header form option{
+	/*border-color: #CC490B;
+	color: #fff;
+	background: #0F0F1E;*/
+	float: right;
+}
+#fondheader{
+	/*background: url('../../images/fleur.jpg')no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-o-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	margin: 0;
+	padding: 0;*/
+	
+}
+#fondheader img{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 5;
+}
+#fondheader article{
+	float: none;
+	margin: 0 auto;
+	position: absolute;
+	z-index: 10;
+	top:100px;
+
+}
+#fondheader article h1{
+    font-family: verdana;
+
+	font-size: 5em;
+	letter-spacing: 5px;
+	color: #fff;
+	text-shadow: 0px 0px 9px #0F0F1E;
+	text-align: center;
+	/*position: absolute; 
+	top:20%;
+	left:40%;*/
+	text-align: center; 
+	
+	
+	
+}
+#fondheader article h3{
+    font-family: verdana;
+
+	font-size: 2em;
+	letter-spacing: 2px;
+	color: #fff;
+	text-shadow: 0px 0px 9px #0F0F1E;
+	/*position:absolute;
+	top:30%;
+	left: 20%;*/
+	text-align: center; 
+	
+
+}
+#fondheader a{
+	
+	
+	font-size: 2em;
+	letter-spacing: 4px;
+	background: #CC490B;
+	color: #fff;
+	margin-left: 7.5%;
+	position: fixed; 
+	padding: 10px;
+	text-align: center;
+
+}
+
+/*--------------------------------------
+           CONTENU
+--------------------------------------*/
+#content{
+	margin-bottom: 20px;
+	
+    
+}
+#content section aside{
+	clear: both;
+
+}
+
+#content article>header>h2>a{
+	color: #CC490B;
+}
+
+#content section aside img{
+	border: 1px solid #533211;
+	margin: 20px;
+	width: 230px;
+}
+#content section aside p{
+	position: relative;
+	top:-50px;
+	right: -20px;
+	background-color: rgba(83, 50, 17, 0.5);
+	color: #fff;
+}
+#content a{
+      color:#CC490B;
+}
+.btn{
+	background: #533211;
+	color: #fff;
+	border-radius: 0 0 0 0;
+}
+/*LEFT*/
+#left-content{
+	margin-right: 10px;
+}
+
+#slogan{
+    font-family: verdana;
+	font-size: 2.5em;
+	letter-spacing: 2px;
+	color: #CC490B;
+
+}
+#left-content header{
+	margin-bottom: 20px;
+}
+#left-content h1{
+	color: #533211;
+	font-size: 4em;
+	letter-spacing: 5px;
+	font-weight: bold;
+}
+#left-content h3{
+	color: #533211;
+	font-size: 1.2em;
+	font-weight: bold;
+	letter-spacing: 2px;
+	padding-left: 30px;
+
+}
+#left-content p{
+	font-size: 1.1em;
+	margin-bottom: 10px;
+	margin-right: 40px;
+	line-height: 25px;
+}
+#left-content{
+	font-size: 1.1em;
+	letter-spacing: 1px;
+	word-spacing: 2px;
+	
+}
+#left-content h4{
+	color:#400040;
+}
+#left-content strong{
+	color: #533211;
+}
+#left-content ul li {
+	list-style-image : url("../../images/favicon.ico");
+	color: #533211;
+}
+
+/*RIGHT*/
+#right-content{
+    padding-left: 10px;
+}
+#right-content h2{
+	background: #533211;
+	color: #fff;
+	padding: 10px;
+}
+#right-content ul{
+	
+	margin-left: 5px;
+	padding-left: 0;
+	
+}
+#right-content li{
+	/*list-style:none;*/
+	display: block;
+	margin-bottom: 10px;
+	
+	
+	
+}
+#right-content li a{
+	
+	color:#400040;
+	
+	
+}
+/*--------------------------------------
+           CAROUSEL
+--------------------------------------*/
+.carousel img{
+	border: 1px solid #533211;
+}
+
+
+/*--------------------------------------
+           FOOTER
+--------------------------------------*/
+
+#footer1{
+	background: #533211;
+	padding: 13px;
+}
+#footer1 h3{
+	color: #CC490B;
+}
+#footer1 p{
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	word-spacing: 2px;
+	text-align: justify;
+	color: #fff;
+	line-height: 25px;
+}
+#footer2{
+	background: #000000;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+
+}
+#footer2 p{
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	word-spacing: 2px;
+	text-align: justify;
+}
+#footer2 a{
+	color: #fff;
+}
+#footer-solei p{
+   margin-top: 20px;
+}
+#logo-vae{
+   margin: 0;
+   padding: 0;
+   float: right;
+}
+
+#test a{
+
+	font-size:  0.8em;
+	line-height: 0.8em;
+}
+
+#content article #inscrip{
+	background: #CC490B;
+	color: #fff;
+	border: none;
+	padding: 5px;
+
+}
+
+#content  h1{
+
+	font-size: 2.5em;
+
+
+}

@@ -12,6 +12,9 @@ class AgendaController extends controller {
         $modelManager = $this->getDoctrine()->getManager();
         
         $rSite = $modelManager->getRepository('VaeMultiSiteBundle:Sites')->findOneByNom($nomSite);
+            
+        
+        
         
         if($_locale == 'fr'){
         
@@ -23,6 +26,9 @@ class AgendaController extends controller {
                                         ->setParameter('Id', $rSite->getId())
                                         ->getQuery()
                                         ->getResult();
+            
+            $rRubrique = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findOneBy(array('sites'=>$rSite->getId(),
+                                                                                                  'slug'=> 'accueil'));
         }
         
         else{
@@ -36,13 +42,17 @@ class AgendaController extends controller {
                                         ->setParameter('Id', $rSite->getId())
                                         ->getQuery()
                                         ->getResult();
+            
+            $rRubrique = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findOneBy(array('sites'=>$rSite->getId(),
+                                                                                                  'slugEn'=>'home'));
         }
 
         //on charge la vue et on lui envoi la liste des catégories
         return $this->render('VaeBaseBundle:Agenda:agenda.html.twig',
                 array('agendas' => $rsAgendas,
                       'site' => $rSite,
-                      'langue' => $_locale));
+                      'langue' => $_locale,
+                      'rubrique' => $rRubrique));
     }
     
     
@@ -74,7 +84,7 @@ class AgendaController extends controller {
                                         ->select('a')
                                         ->from('VaeBaseBundle:Agendas', 'a')
                                         ->where('a.sites = :Id')
-                                        ->andwhere('a.date < :NOW')
+                                        ->andwhere('a.date > :NOW')
                                         ->andWhere('a.slugEn IS NOT NULL')
                                         ->orderBy('a.date', 'ASC')
                                         ->setParameter('Id', $rSite->getId())
@@ -82,6 +92,7 @@ class AgendaController extends controller {
                                         ->setMaxResults('5')
                                         ->getQuery()
                                         ->getResult();
+            
         }
 
         //on charge la vue et on lui envoi la liste des catégories
@@ -108,6 +119,9 @@ class AgendaController extends controller {
             
             $rAgenda = $modelManager->getRepository('VaeBaseBundle:Agendas')->findOneBy(array('sites'=>$rSite->getId(),
                                                                                               'slug'=>$slugAgenda));
+            
+            $rRubrique = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findOneBy(array('sites'=>$rSite->getId(),
+                                                                                                  'slug'=> 'accueil'));
 
         }
         
@@ -115,6 +129,9 @@ class AgendaController extends controller {
             
            $rAgenda = $modelManager->getRepository('VaeBaseBundle:Agendas')->findOneBy(array('sites'=>$rSite->getId(),
                                                                                              'slugEn'=>$slugAgenda));
+           
+           $rRubrique = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findOneBy(array('sites'=>$rSite->getId(),
+                                                                                                  'slugEn'=>'home'));
             
         }
         
@@ -130,7 +147,8 @@ class AgendaController extends controller {
         return $this->render('VaeBaseBundle:Agenda:detail.html.twig',
                 array('agenda' => $rAgenda,
                       'site' => $rSite,
-                      'langue' => $_locale));
+                      'langue' => $_locale,
+                      'rubrique' => $rRubrique));
     }
 }
 

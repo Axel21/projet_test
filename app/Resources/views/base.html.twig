@@ -1,9 +1,188 @@
 <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Avec le Soleil</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('bootstrap/images/favicon.ico') }}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+        {% if site.nom == 'Alphabétisation' %}
+        <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/alpha.css') }}">
+        {% endif %}
+        {% if site.nom == 'EFT' %}
+        <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/eft.css') }}">
+        {% endif %}
+        {% if site.nom == 'Céramique' %}
+        <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/ceramique.css') }}">
+        {% endif %}
+        <link href="{{ asset('bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+        <link href="{{ asset('bootstrap/dist/css/slider.css') }}" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800,400italic,700italic,500italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('bootstrap/navbar-fixed-top.css') }}" rel="stylesheet">
+<script>
+// Carousel Auto-Cycle
+  $(document).ready(function() {
+    $('.carousel').carousel({
+      interval: 6000
+    });
+  });
+
+</script>
+</head>
+<body>
+    <section id="page" class="container-fluid">
+
+   <!--###### HEADER ######-->
+      <header id="header">
+        <!--######## NAV BARRE #########-->
+       
+          <!-- Fixed navbar -->
+    <section class="navbar navbar-fixed-top row" role="navigation">
+      <section class="container col-md-10 menu-center">
+        <section class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <h1><a class="navbar-brand" href="{{ path('vae_multi_site_accueil')}}"><img src="{{ asset('bootstrap/images/logo-soleil.png') }}"></a></h1>
+        </section>
+            {% if langue == 'fr' %}
+                {{ render(controller('VaeBaseBundle:Rubrique:menu', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slug  } ))}}
+            {% else %}
+                {{ render(controller('VaeBaseBundle:Rubrique:menu', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn  } ))}}
+            {% endif %}
+      </section>
+    </section>
+     <section id="fondheader">
+       
+        <figure class="nonSmall">
+            {% if site.nom == 'Alphabétisation' %}
+                <img src="{{ asset('bootstrap/images/alpha.jpg') }}">
+            {% endif %}
+            {% if site.nom == 'EFT' %}
+                <img src="{{ asset('bootstrap/images/fleur.jpg') }}">
+            {% endif %}
+            {% if site.nom == 'Céramique' %}
+                <img src="{{ asset('bootstrap/images/ceramique.jpg') }}">
+            {% endif %}
+            
+        </figure>
+        <article>
+       
+         <a href="dons.html">Faire un Don</a> 
+          
+       </article>
+
+</header><!-- end header-->
+    <section id="sous-header">
+      <!-- ########## CENTER ZONE ########## -->  
+      <section id="content" class="row container-fluid">
+        <section class="col-md-10 container" id="content-center">
+      
+        <!-- ########## LEFT CONTENT ########## -->
+   <section id="left-content" >
+   <section class="col-md-9">
+            {% block content %}{% endblock %}
+   </section>
+</section><!--end left-content-->
+
+        <!-- ########## RIGHT CONTENT ########## --> 
+        <section id="right-content">
+          <section class="col-md-3">
+            {{ render(controller('VaeBaseBundle:Agenda:liste', {'nomSite' : site.nom } ))}}
+            {{ render(controller('VaeBaseBundle:Liens:listePartenaires', {'nomSite' : site.nom } ))}}
+          </section>
+        </section><!--end right-content--> 
+        <!--<div class="container-fluid">-->
+<div class="row">
+<div class="col-md-12 clear">
+
+        
+</div><!-- /.span12 -->          
+</div><!-- /.row --> 
+<!--</div>--><!-- /.container -->
+
+                            
+<!-- Delete This -->                        
+
+        </section>
+     </section><!--end content-->  
+<!-- ########## FOOTER ########## --> 
+<footer id="footer" class="row container-fluid">
+
+
+    <section id="footer1" class="row">
+      <section class="col-md-10 footer-center ">
+        <section class="row">
+      <article class="col-md-5">
+        {% if site.nom == 'Alphabétisation' %}
+        {% endif %}
+        {% if site.nom == 'EFT' %}
+            <h3>Vous voulez allez plus loin dans votre développement personnel ?</h3>
+            <p>Contactez-moi, nous ferons un bout de chemin ensemble tout en sachant que mon objectif est de vous rendre autonome le plus rapidement possible. Les séances peuvent se tenir via Skype ce qui vous donne une grande liberté de mouvements.</p>
+        {% endif %}
+        {% if site.nom == 'Céramique' %}
+        {% endif %}
+      </article>
+      <article class="col-md-7">
+          {% if site.nom == 'Alphabétisation' %}
+          {% endif %}
+          {% if site.nom == 'EFT' %}
+            <h3>Avertissement</h3>
+            <p>l’EFT est une modalité thérapeutique qui fait partie d’un nouveau type de traitements et protocoles faisant partie de ce qui est appelé La Psychologie Energétique. Même si c’est toujours considéré à un stade expérimental, ces techniques sont utilisées par des thérapeutes, des infirmières, des kinésithérapeutes, des psychiatres et des individus de par le monde.</p><p> Jusqu’à aujourd’hui, l’EFT et les autres Techniques de Psychologie Energétiques (TAT, Zensight,...) ont eu des résultats exceptionnels dans le traitement de problèmes psychologiques et physiques.Néanmoins ces techniques ne sont PAS sensées remplacer les traitements médicaux ou psychothérapeutiques. </p>
+            <p>Personnellement, je n’ai pas expérimenté d’effets secondaires négatifs en appliquant ces techniques en suivant correctement les protocoles et les suggestions de traitement.Cela ne veut pas dire que vous ou vos clients ne vont pas expérimenter ou percevoir des effets secondaires négatifs. Si vous utilisez ces techniques pour vous ou pour d’autres, vous devez être d’accord d’être pleinement responsable de votre bien-être et vous êtes encouragés d’aviser vos clients à faire de même.</p><p>Si vous êtiez perturbé après une séance de psychologie énergétique, contactez un praticien expérimenté.</p>
+          {% endif %}
+          {% if site.nom == 'Céramique' %}
+          {% endif %}
+
+     </article>
+     </section>
+     </section>
+    </section>
+
+
+    <section id="footer2" class="row">
+       <section class="col-md-10 footer-center">
+          <section class="row">
+          <article class="col-md-3"><a href="aveclesoleil.be" id="footer-soleil"><img src="{{ asset('bootstrap/images/logo-soleil-footer.png') }}"><p>Avec Le Soleil - asbl</p></a></article>
+          <article class="col-md-3 col-md-offset-6"><a href="#" id="logo-vae">Web site create by <img src="{{ asset('bootstrap/images/logo-vae.png') }}"></a></article>
+          </section>  
+        </section>
+    </section>
+ 
+</footer><!--end footer-->
+</section><!--end sous-header -->
+ </section><!--end page--> 
+  <!-- jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include insectionidual files as needed -->
+    <script src="{{ asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    
+    {%block javascripts%} {% endblock %}
+    
+</body>
+</html>
+
+{#<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% if site.nom == 'Alphabétisation' %}
+        {% endif %}
+        <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/eft.css') }}">
+        {% if site.nom == 'EFT' %}
+        <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/eft.css') }}">
+        {% endif %}
+        {% if site.nom == 'Céramique' %}
+        <link rel="stylesheet" href="{{ asset('bootstrap/dist/css/ceramique.css') }}">
+        {% endif %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -32,4 +211,4 @@
         {% endblock %}
             {%block javascripts%} {% endblock %}
     </body>
-</html>
+</html>#}

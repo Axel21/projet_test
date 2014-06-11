@@ -36,7 +36,8 @@ class ContactController extends controller {
                     // On redirige vers la liste des categories
                     return $this->render('VaeBaseBundle:Contact:send.html.twig',
                                   array( 'site' => $rSite,
-                                         'rubrique' => $rRubrique
+                                         'rubrique' => $rRubrique,
+                                         'langue' => $_locale
                               ));
                 //}
                 
@@ -50,7 +51,8 @@ class ContactController extends controller {
         return $this->render('VaeBaseBundle:Contact:form.html.twig',
                       array( 'site' => $rSite,
                              'rubrique' => $rRubrique,
-                             'form' => $form->createView()
+                             'form' => $form->createView(),
+                             'langue' => $_locale
                       ));
         
     }

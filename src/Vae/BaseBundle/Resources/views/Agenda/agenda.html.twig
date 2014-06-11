@@ -1,23 +1,36 @@
 {% extends "::base.html.twig" %}
 {%block content%}
-<h1>Agenda</h1>
-    <ul id="agenda">
-         {% for agenda in agendas %}
-            {% if langue == 'fr'%}
-                <li>
-                    <h3><a class="test" href="{{ path('vae_base_agenda_detail',{'nomSite' : site.nom, 'slugAgenda' : agenda.slug } )}}">{{agenda.titre}}</a></h3>
-                    <p>{{agenda.contenu}}</p>
-                    <p>{{agenda.date|date('d/m/y')}}</p>
-             {% else %}
-                    <h3><a class="test" href="{{ path('vae_base_agenda_detail',{'nomSite' : site.nom, 'slugAgenda' : agenda.slugEn } )}}">{{agenda.titreEn}}</a></h3>
-                    <p>{{agenda.contenuEn}}</p>
-                    <p>{{agenda.date|date('m/d/y')}}</p>
-                </li>
-             {% endif %}
-          {% endfor %}
-    </ul>
-{%endblock%}
+<section id="left-content" >
+<section class="col-md-9">
 
+         <article><h2>Agenda</h2>
+         <ul>
+            {% for agenda in agendas %}
+            <li>{% if langue == 'fr'%}<a href="{{ path('vae_base_agenda_detail',{'nomSite' : site.nom, 'slugAgenda' : agenda.slug } )}}"><article>
+              <header>
+              <h1>{{agenda.titre}}</h1>
+              <time>{{agenda.date|date('d/m/y')}}</time>
+              </header>
+              <p>{{agenda.contenu|raw}}</p>
+              </article></a>
+            {% else %}
+              <a href="{{ path('vae_base_agenda_detail',{'nomSite' : site.nom, 'slugAgenda' : agenda.slugEn } )}}"><article>
+              <header>
+              <h1>{{agenda.titreEn}}</h1>
+              <time>{{agenda.date|date('m/d/y')}}</time>
+              </header>
+              <p>{{agenda.contenuEn|raw}}</p>
+              </article></a>
+            {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </article>
+    
+</section>
+</section><!--end left-content-->
+
+{%endblock%}
 
 {#
     Exemple 1 : agenda complet, ...

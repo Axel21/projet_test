@@ -47,22 +47,34 @@ class RubriqueController extends controller {
 
     }
     
-   public function menuAction($_locale, $nomSite){
+   public function menuAction($_locale, $nomSite, $slugRubrique){
         
-        //on va chercher la liste des catégories !
-        
+       
         $modelManager = $this->getDoctrine()->getManager();
         
         $rSite = $modelManager->getRepository('VaeMultiSiteBundle:Sites')->findOneByNom($nomSite);
         
         $rsRubriques = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findBy(array('sites'=>$rSite->getId()));
         
-
+        if($_locale == 'fr'){
+        
+            $thisRubrique = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findOneBy(array('sites'=>$rSite->getId(),
+                                                                                                     'slug'=>$slugRubrique));
+        }
+        
+        else{
+        
+            $thisRubrique = $modelManager->getRepository('VaeBaseBundle:Rubriques')->findOneBy(array('sites'=>$rSite->getId(),
+                                                                                                     'slugEn'=>$slugRubrique));    
+        }
+        
         //on charge la vue et on lui envoi la liste des catégories
         return $this->render('VaeBaseBundle:Rubrique:menu.html.twig',
                 array('rubriques' => $rsRubriques,
                       'site' => $rSite,
-                      'langue' => $_locale));
+                      'langue' => $_locale,
+                      'thisRub' => $thisRubrique 
+                      ));
     }
    
    

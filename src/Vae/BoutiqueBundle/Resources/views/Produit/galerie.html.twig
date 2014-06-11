@@ -1,18 +1,15 @@
-<h1>galerie des créations</h1>
-<ul id="listeProduit">
+
+    <h1>Nos créations</h1>
+
          {% for produit in produits %}
             {% if langue == 'fr'%}
-                <li>
-                    <h3><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}">{{produit.nom}}</a></h3>
-                    <p>{{produit.description}}</p>
+                <div class="col-md-3"><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}" width='200px' height='120'></a><p class="col-md-9">{{produit.nom}}</p></div>
              {% else %}
-                    <h3><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}">{{produit.nomEn}}</a></h3>
-                    <p>{{produit.descriptionEn}}</p>
+                <div class="col-md-3"><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}" width='200px' height='120'></a><p class="col-md-9">{{produit.nomEn}}</p></div>
              {% endif %}
-                    <img src="{{ asset('uploads/images/'~produit.image) }}" />
-                </li>
+
           {% endfor %}
-    </ul>
+
 
 {#
     Exemple 1 : detail de produit en vente

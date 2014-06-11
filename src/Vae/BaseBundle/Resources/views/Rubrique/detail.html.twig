@@ -1,17 +1,14 @@
 {% extends "::base.html.twig" %}
 {%block content%}
+    
 <article>
-    <div>
-        <a href="{{ path("vae_base_rubrique_detail", { '_locale': 'fr', 'nomSite': site.nom, 'slugRubrique': rubrique.slug}) }}">Francais</a>
-        <a href="{{ path("vae_base_rubrique_detail", { '_locale': 'en', 'nomSite': site.nom, 'slugRubrique': rubrique.slugEn}) }}">Anglais</a>   
-    </div>
                                             
     <div>
         {% if langue == 'fr'%}
-            <h2><a href="#">{{rubrique.nom}}</a></h2>
+            <h2>{{rubrique.nom}}</h2>
             <p>{{rubrique.contenu|raw}}</p>
         {% else %}
-            <h2><a href="#">{{rubrique.nomEn}}</a></h2>
+            <h2>{{rubrique.nomEn}}</h2>
             <p>{{rubrique.contenuEn|raw}}</p>
         {% endif %}
             <img src="{{ asset('uploads/images/'~rubrique.image) }}" />
@@ -52,6 +49,7 @@
     {% endif %}
 {% endif %}
 </div>
+
 {%endblock%}
 
 {#

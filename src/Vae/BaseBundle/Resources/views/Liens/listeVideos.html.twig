@@ -1,11 +1,30 @@
 
-    <ul>
-         {% for video in videos %}
-            <li>
-               <iframe width="320" height="215" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
-             </li>
-          {% endfor %}
-    </ul>
+  
+        <div class="carousel slide" id="myCarousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                    
+                    <ul class="thumbnails">
+                        {% for video in videos %}
+                        <li class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="{{video.url}}"><iframe width="225" height="155" src="{{video.url}}" frameborder="0" allowfullscreen></iframe></a>
+                            </div>
+                            
+                        </li>
+                        {% endfor %}
+                        
+                    </ul>
+             
+             
+            </div>
+        
+        {#<div class="control-box">                            
+            <a data-slide="prev" href="#myCarousel" class="carousel-control left">‹</a>
+            <a data-slide="next" href="#myCarousel" class="carousel-control right">›</a>
+        </div><!-- /.control-box -->   #}
+                              
+    </div><!-- /#myCarousel -->
 
 
 {#

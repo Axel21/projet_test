@@ -1,19 +1,36 @@
 {% extends "::base.html.twig" %}
 {%block content%}
-<article>
-            {% if langue == 'fr'%}
-                    <h4>{{agenda.titre}}</h4>
-                    <p>{{agenda.contenu}}</p>
-                    <p>{{agenda.date|date('d/m/y')}}</p>
-                    <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : 'accueil' } )}}'>Retour</a></p>
-             {% else %}
-                    <h4>{{agenda.titreEn}}</h4>
-                    <p>{{agenda.contenuEn}}</p>
-                    <p>{{agenda.date|date('m/d/y')}}</p>
-                    <p><a href='{{ path('vae_base_rubrique_detail',{'nomSite' : site.nom, 'slugRubrique' : 'home' } )}}'>Back</a></p>
-             {% endif %}
-</article>
+<section id="left-content" >
+<section class="col-md-9">
+ 
+    <article>
+     
+        <h2>Agenda - Détail</h2>
+         <article>
+             {% if langue == 'fr'%}
+              <header>
+              <h1>{{agenda.titre}}</h1>
+              <time>{{agenda.date|date('d/m/y')}}</time>
+              </header>
+              <p>{{agenda.contenu|raw}}</p>
+             </article>
+              {% else %}
+              <header>
+              <h1>{{agenda.titreEn}}</h1>
+              <time>{{agenda.date|date('m/d/y')}}</time>
+              </header>
+              <p>{{agenda.contenuEn|raw}}</p>
+              </article>
+              {% endif %}
+        </article>
+        
+</section>
+</section><!--end left-content-->
 {%endblock%}
+
+
+
+ 
 
 {#
     Exemple 1 : detail d'un evenement de l'agenda, ...
