@@ -91,7 +91,7 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
        
           <!-- Fixed navbar -->
     <section class=\"navbar navbar-fixed-top row\" role=\"navigation\">
-      <section class=\"container col-md-10 menu-center\">
+      <section class=\"container col-md-10 menu-center\" id='menu-center'>
         <section class=\"navbar-header\">
           <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">
             <span class=\"sr-only\">Toggle navigation</span>
@@ -106,60 +106,65 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/images/logo-soleil.png"), "html", null, true);
         echo "\"></a></h1>
         </section>
+
             ";
-        // line 54
+        // line 55
         if (((isset($context["langue"]) ? $context["langue"] : $this->getContext($context, "langue")) == "fr")) {
-            // line 55
+            // line 56
             echo "                ";
             echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Rubrique:menu", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slug"))));
             echo "
             ";
         } else {
-            // line 57
+            // line 58
             echo "                ";
             echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Rubrique:menu", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"), "slugRubrique" => $this->getAttribute((isset($context["rubrique"]) ? $context["rubrique"] : $this->getContext($context, "rubrique")), "slugEn"))));
             echo "
             ";
         }
-        // line 59
-        echo "      </section>
+        // line 60
+        echo "
+      </section>
     </section>
      <section id=\"fondheader\">
        
         <figure class=\"nonSmall\">
             ";
-        // line 64
+        // line 66
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Alphabétisation")) {
-            // line 65
+            // line 67
             echo "                <img src=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/images/alpha.jpg"), "html", null, true);
             echo "\">
             ";
         }
-        // line 67
+        // line 69
         echo "            ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "EFT")) {
-            // line 68
+            // line 70
             echo "                <img src=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/images/fleur.jpg"), "html", null, true);
             echo "\">
             ";
         }
-        // line 70
+        // line 72
         echo "            ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Céramique")) {
-            // line 71
+            // line 73
             echo "                <img src=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/images/ceramique.jpg"), "html", null, true);
             echo "\">
             ";
         }
-        // line 73
+        // line 75
         echo "            
         </figure>
         <article>
        
-         <a href=\"dons.html\">Faire un Don</a> 
+         <a href=\"";
+        // line 79
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_dons_dons", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))), "html", null, true);
+        echo "\">Faire un Don</a> 
           
        </article>
 
@@ -173,9 +178,9 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
    <section id=\"left-content\" >
    <section class=\"col-md-9\">
             ";
-        // line 90
+        // line 92
         $this->displayBlock('content', $context, $blocks);
-        // line 91
+        // line 93
         echo "   </section>
 </section><!--end left-content-->
 
@@ -183,11 +188,11 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
         <section id=\"right-content\">
           <section class=\"col-md-3\">
             ";
-        // line 97
+        // line 99
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Agenda:liste", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
         echo "
             ";
-        // line 98
+        // line 100
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listePartenaires", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
         echo "
           </section>
@@ -211,54 +216,54 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
 
 
     <section id=\"footer1\" class=\"row\">
-      <section class=\"col-md-10 footer-center \">
-        <section class=\"row\">
+      <section class=\"col-md-10 footer-center \" id='footer-center'>
+      <section class=\"row\">
       <article class=\"col-md-5\">
         ";
-        // line 123
+        // line 125
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Alphabétisation")) {
-            // line 124
+            // line 126
             echo "        ";
         }
-        // line 125
+        // line 127
         echo "        ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "EFT")) {
-            // line 126
+            // line 128
             echo "            <h3>Vous voulez allez plus loin dans votre développement personnel ?</h3>
             <p>Contactez-moi, nous ferons un bout de chemin ensemble tout en sachant que mon objectif est de vous rendre autonome le plus rapidement possible. Les séances peuvent se tenir via Skype ce qui vous donne une grande liberté de mouvements.</p>
         ";
         }
-        // line 129
+        // line 131
         echo "        ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Céramique")) {
-            // line 130
+            // line 132
             echo "        ";
         }
-        // line 131
+        // line 133
         echo "      </article>
       <article class=\"col-md-7\">
           ";
-        // line 133
+        // line 135
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Alphabétisation")) {
-            // line 134
+            // line 136
             echo "          ";
         }
-        // line 135
+        // line 137
         echo "          ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "EFT")) {
-            // line 136
+            // line 138
             echo "            <h3>Avertissement</h3>
             <p>l’EFT est une modalité thérapeutique qui fait partie d’un nouveau type de traitements et protocoles faisant partie de ce qui est appelé La Psychologie Energétique. Même si c’est toujours considéré à un stade expérimental, ces techniques sont utilisées par des thérapeutes, des infirmières, des kinésithérapeutes, des psychiatres et des individus de par le monde.</p><p> Jusqu’à aujourd’hui, l’EFT et les autres Techniques de Psychologie Energétiques (TAT, Zensight,...) ont eu des résultats exceptionnels dans le traitement de problèmes psychologiques et physiques.Néanmoins ces techniques ne sont PAS sensées remplacer les traitements médicaux ou psychothérapeutiques. </p>
             <p>Personnellement, je n’ai pas expérimenté d’effets secondaires négatifs en appliquant ces techniques en suivant correctement les protocoles et les suggestions de traitement.Cela ne veut pas dire que vous ou vos clients ne vont pas expérimenter ou percevoir des effets secondaires négatifs. Si vous utilisez ces techniques pour vous ou pour d’autres, vous devez être d’accord d’être pleinement responsable de votre bien-être et vous êtes encouragés d’aviser vos clients à faire de même.</p><p>Si vous êtiez perturbé après une séance de psychologie énergétique, contactez un praticien expérimenté.</p>
           ";
         }
-        // line 140
+        // line 142
         echo "          ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Céramique")) {
-            // line 141
+            // line 143
             echo "          ";
         }
-        // line 142
+        // line 144
         echo "
      </article>
      </section>
@@ -267,14 +272,14 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
 
 
     <section id=\"footer2\" class=\"row\">
-       <section class=\"col-md-10 footer-center\">
+       <section class=\"col-md-10 footer-center\" id='footer-center'>
           <section class=\"row\">
           <article class=\"col-md-3\"><a href=\"aveclesoleil.be\" id=\"footer-soleil\"><img src=\"";
-        // line 152
+        // line 154
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/images/logo-soleil-footer.png"), "html", null, true);
         echo "\"><p>Avec Le Soleil - asbl</p></a></article>
           <article class=\"col-md-3 col-md-offset-6\"><a href=\"#\" id=\"logo-vae\">Web site create by <img src=\"";
-        // line 153
+        // line 155
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/images/logo-vae.png"), "html", null, true);
         echo "\"></a></article>
           </section>  
@@ -289,14 +294,14 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
     <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>
   <!-- Include all compiled plugins (below), or include insectionidual files as needed -->
     <script src=\"";
-        // line 165
+        // line 167
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/dist/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     
     ";
-        // line 167
+        // line 169
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 168
+        // line 170
         echo "    
 </body>
 </html>
@@ -304,12 +309,12 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
 ";
     }
 
-    // line 90
+    // line 92
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 167
+    // line 169
     public function block_javascripts($context, array $blocks = array())
     {
         echo " ";
@@ -327,6 +332,6 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
 
     public function getDebugInfo()
     {
-        return array (  313 => 167,  308 => 90,  300 => 168,  298 => 167,  293 => 165,  278 => 153,  274 => 152,  262 => 142,  259 => 141,  256 => 140,  250 => 136,  247 => 135,  244 => 134,  242 => 133,  238 => 131,  235 => 130,  232 => 129,  227 => 126,  224 => 125,  221 => 124,  219 => 123,  191 => 98,  187 => 97,  179 => 91,  177 => 90,  158 => 73,  152 => 71,  149 => 70,  143 => 68,  140 => 67,  134 => 65,  132 => 64,  125 => 59,  119 => 57,  113 => 55,  111 => 54,  104 => 52,  73 => 24,  65 => 19,  60 => 18,  54 => 16,  51 => 15,  45 => 13,  42 => 12,  36 => 10,  34 => 9,  27 => 5,  21 => 1,);
+        return array (  318 => 169,  313 => 92,  305 => 170,  303 => 169,  298 => 167,  283 => 155,  279 => 154,  267 => 144,  264 => 143,  261 => 142,  255 => 138,  252 => 137,  249 => 136,  247 => 135,  243 => 133,  240 => 132,  237 => 131,  232 => 128,  229 => 127,  226 => 126,  224 => 125,  196 => 100,  192 => 99,  184 => 93,  182 => 92,  166 => 79,  154 => 73,  145 => 70,  142 => 69,  136 => 67,  134 => 66,  126 => 60,  120 => 58,  114 => 56,  104 => 52,  73 => 24,  65 => 19,  60 => 18,  51 => 15,  45 => 13,  42 => 12,  36 => 10,  34 => 9,  27 => 5,  21 => 1,  167 => 53,  160 => 75,  157 => 49,  151 => 72,  148 => 46,  143 => 44,  138 => 43,  135 => 42,  130 => 40,  125 => 39,  122 => 38,  115 => 35,  112 => 55,  106 => 32,  103 => 31,  98 => 29,  93 => 28,  90 => 27,  85 => 25,  80 => 24,  77 => 23,  75 => 22,  68 => 17,  62 => 15,  59 => 14,  54 => 16,  49 => 11,  44 => 9,  39 => 8,  37 => 7,  31 => 3,  28 => 2,);
     }
 }

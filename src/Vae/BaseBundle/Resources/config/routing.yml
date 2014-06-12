@@ -4,6 +4,12 @@ vae_base_agenda_agenda:
     requirements:
         _locale:  fr|en
         
+vae_base_dons_dons:
+    pattern:  /{_locale}/{nomSite}/dons
+    defaults: { _controller: VaeBaseBundle:Dons:dons , _locale: fr }
+    requirements:
+        _locale:  fr|en
+        
 vae_base_rubrique_detail:
     pattern:  /{_locale}/{nomSite}/{slugRubrique}
     defaults: { _controller: VaeBaseBundle:Rubrique:detail , _locale: fr }

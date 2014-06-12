@@ -57,3 +57,32 @@
 	cursor:pointer;
 }
 
+#profil_test_container{
+	
+	width: 600px;
+	background: #666;
+	color: #ddd;
+	margin: auto;
+        padding: 20px;
+        border: 5px solid #000;
+}
+
+#profil_test_container p, h3, h2{
+
+	color: #fff;
+}
+
+#profil_test_container a{
+
+	color: pink;
+}
+
+
+#profil{
+	
+	width: 400px;
+	top: 50px;
+	font-family: fantasy;
+	font-size: 20px;
+}
+

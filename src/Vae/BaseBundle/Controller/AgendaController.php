@@ -72,10 +72,13 @@ class AgendaController extends controller {
                                         ->andwhere('a.date > :NOW')
                                         ->orderBy('a.date', 'ASC')
                                         ->setParameter('Id', $rSite->getId())
-                                        ->setParameter(':NOW', 'NOW()')
+                                        ->setParameter(':NOW', new \DateTime())    
                                         ->setMaxResults('5')
                                         ->getQuery()
                                         ->getResult();
+           /* var_dump($rsAgendas);
+            die(); */
+
         }
         
         else{
@@ -84,11 +87,11 @@ class AgendaController extends controller {
                                         ->select('a')
                                         ->from('VaeBaseBundle:Agendas', 'a')
                                         ->where('a.sites = :Id')
-                                        ->andwhere('a.date > :NOW')
+                                        ->andwhere ('a.date >= :NOW')
                                         ->andWhere('a.slugEn IS NOT NULL')
                                         ->orderBy('a.date', 'ASC')
                                         ->setParameter('Id', $rSite->getId())
-                                        ->setParameter(':NOW', 'NOW()')
+                                        ->setParameter(':NOW', new \DateTime())
                                         ->setMaxResults('5')
                                         ->getQuery()
                                         ->getResult();

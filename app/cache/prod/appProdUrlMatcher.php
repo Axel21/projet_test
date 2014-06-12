@@ -494,6 +494,11 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'vae_base_agenda_agenda')), array (  '_controller' => 'Vae\\BaseBundle\\Controller\\AgendaController::agendaAction',  '_locale' => 'fr',));
         }
 
+        // vae_base_dons_dons
+        if (preg_match('#^/(?P<_locale>fr|en)/(?P<nomSite>[^/]++)/dons$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'vae_base_dons_dons')), array (  '_controller' => 'Vae\\BaseBundle\\Controller\\DonsController::donsAction',  '_locale' => 'fr',));
+        }
+
         // vae_base_rubrique_detail
         if (preg_match('#^/(?P<_locale>fr|en)/(?P<nomSite>[^/]++)/(?P<slugRubrique>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'vae_base_rubrique_detail')), array (  '_controller' => 'Vae\\BaseBundle\\Controller\\RubriqueController::detailAction',  '_locale' => 'fr',));

@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+{%block content%}
+
+ <article>
+              <h2>Faite un dons pour notre asbl</h2>
+              <p>Nous sommes une association à but non lucratif.<br>
+                Nous somme là pour aider les personnes en difficulté et toutes nos formations ou nos ateliers ne sont pas payants.<br>
+                C'est pour cela que nous demandons des dons aux personnes qui peuvent le faire et qui voudrais nous aider dans nos idées.
+              </p>
+              </article>
+
+            <article>
+               
+              <p>Si vous voulez un peu mieux nous connaître et connaître nos idées et nos activités rendez vous sur notre page{% if langue == 'fr'%}
+                                                                                                                              <a class="test" href="{{path('vae_base_rubrique_detail',{'nomSite': site.nom, 'slugRubrique': 'qui-sommes-nous'})}}">historique</a></p>
+                                                                                                                              {% else %}
+                                                                                                                              <a class="test" href="{{path('vae_base_rubrique_detail',{'nomSite': site.nom, 'slugRubrique': 'who-are-we'})}}">historique</a></p>
+                                                                                                                              {% endif %}
+      </article>
+      <article>
+        
+      </article>
+
+            <article><h2>Faire un don via paypal</h2>
+
+                   <p>Pour plus de sécurité et de facilité pour vous comme pour nous, nous vous proposont de réaliser votre dons via paypal en cliquant sur le bouton si dessous<p>
+                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                      <input type="hidden" name="cmd" value="_s-xclick">
+                      <input type="hidden" name="hosted_button_id" value="GADXW639KXMTQ">
+                      <input type="image" src="https://www.paypalobjects.com/fr_FR/BE/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                      <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+                      </form>
+              </article>
+
+          <article>
+            <p><a href="{{path('vae_base_rubrique_detail',{'nomSite': site.nom, 'slugRubrique': 'contact'})}}">N'hésité pas à nous contacter!</a></p>
+          </article>
+
+{%endblock%}

@@ -41,7 +41,7 @@
        
           <!-- Fixed navbar -->
     <section class="navbar navbar-fixed-top row" role="navigation">
-      <section class="container col-md-10 menu-center">
+      <section class="container col-md-10 menu-center" id='menu-center'>
         <section class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -51,11 +51,13 @@
           </button>
           <h1><a class="navbar-brand" href="{{ path('vae_multi_site_accueil')}}"><img src="{{ asset('bootstrap/images/logo-soleil.png') }}"></a></h1>
         </section>
+
             {% if langue == 'fr' %}
                 {{ render(controller('VaeBaseBundle:Rubrique:menu', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slug  } ))}}
             {% else %}
                 {{ render(controller('VaeBaseBundle:Rubrique:menu', {'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn  } ))}}
             {% endif %}
+
       </section>
     </section>
      <section id="fondheader">
@@ -74,7 +76,7 @@
         </figure>
         <article>
        
-         <a href="dons.html">Faire un Don</a> 
+         <a href="{{ path('vae_base_dons_dons',{'nomSite' : site.nom} )}}">Faire un Don</a> 
           
        </article>
 
@@ -117,8 +119,8 @@
 
 
     <section id="footer1" class="row">
-      <section class="col-md-10 footer-center ">
-        <section class="row">
+      <section class="col-md-10 footer-center " id='footer-center'>
+      <section class="row">
       <article class="col-md-5">
         {% if site.nom == 'Alphabétisation' %}
         {% endif %}
@@ -147,7 +149,7 @@
 
 
     <section id="footer2" class="row">
-       <section class="col-md-10 footer-center">
+       <section class="col-md-10 footer-center" id='footer-center'>
           <section class="row">
           <article class="col-md-3"><a href="aveclesoleil.be" id="footer-soleil"><img src="{{ asset('bootstrap/images/logo-soleil-footer.png') }}"><p>Avec Le Soleil - asbl</p></a></article>
           <article class="col-md-3 col-md-offset-6"><a href="#" id="logo-vae">Web site create by <img src="{{ asset('bootstrap/images/logo-vae.png') }}"></a></article>

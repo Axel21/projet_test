@@ -1,4 +1,4 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "VaeUserBundle::layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
@@ -6,8 +6,8 @@
 {% if error %}
     <div>{{ error|trans }}</div>
 {% endif %}
-
-<form action="{{ path("fos_user_security_check") }}" method="post">
+    <div id='login_admin_container'>
+<form action="{{ path("fos_user_security_check") }}" method="post" id='login_admin'>
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     <br/>
     <label for="username">{{ 'security.login.username'|trans }}</label>
@@ -20,6 +20,7 @@
     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
     <br/>
     <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-</form>
+</form>   
+</div>
     
 {% endblock fos_user_content %}

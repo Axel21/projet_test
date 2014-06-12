@@ -31,7 +31,7 @@ class ContactController extends controller {
                 $to = 'axel_wilhelmus@hotmail.com';
                 $sujet = "Contact du Site de l'ASBL";
                 
-                //if(mail($to, $sujet, $message)){
+                //if(mail($to, $sujet, $message, $mail)){
                     
                     // On redirige vers la liste des categories
                     return $this->render('VaeBaseBundle:Contact:send.html.twig',

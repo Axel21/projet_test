@@ -11,7 +11,9 @@
             <h2>{{rubrique.nomEn}}</h2>
             <p>{{rubrique.contenuEn|raw}}</p>
         {% endif %}
-            <img src="{{ asset('uploads/images/'~rubrique.image) }}" />
+            {%if rubrique.image is not null %}
+                <img src="{{ asset('uploads/images/'~rubrique.image) }}" />
+            {% endif %}
     </div>
    
 

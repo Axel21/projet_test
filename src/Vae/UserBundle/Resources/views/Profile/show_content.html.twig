@@ -1,6 +1,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
-<div class="fos_user_user_show">
+<div id='profil_test_container'>
+    <h1>Votre Profil :</h1>
+<div class="fos_user_user_show" id='profil'>
+    <p><a href="{{ path('vae_multi_site_accueil') }}" class="btn">retour au site</a></p>
     <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
     <p><a href='{{path('fos_user_change_password')}}'>modifier mot de passe</a></p>
@@ -8,3 +10,4 @@
 <div>
     {{ render(controller('VaeInscriptionBundle:Inscription:liste'))}}
 </div>
+<div>
