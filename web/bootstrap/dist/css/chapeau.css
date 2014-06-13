@@ -1,0 +1,185 @@
+ /*---------------------------------------------------
+           MES IMPORTS POUR LE RESPONSIVE
+-----------------------------------------------------*/
+ @import url('structure_medium.css') screen and (max-width: 700px);
+ @import url('structure_small.css') screen and (max-width: 480px);
+
+
+
+/*-------------------------------------------------
+                 règlage générales
+---------------------------------------------------*/
+body, h1, h2, h3{
+	font-family: 'Alegreya Sans', sans-serif;
+	margin: 0;
+	font-style: bold;
+}
+body{
+	
+	padding: 0;
+}
+
+/*--------------------------------------------------
+  margin et padding a 0 et centré
+-----------------------------------------------------*/
+#fondheader h1{
+	margin:0;
+}
+article p{
+	margin: 0;
+	padding: 0;
+}
+#content-center, .footer-center{
+	margin: 0 auto;
+	padding: 0;
+	float: none;
+	
+}
+.menu-center{
+	margin: 0 auto;
+	padding: 0;
+	float: none;
+}
+#left-content .col-md-9, #right-content .col-md-3{
+	padding: 0;
+	margin: 0;
+}
+#footer, #content{
+	margin: 0;
+	padding: 0;
+}
+
+#header{
+    width:100%;
+}
+.row{
+    clear:both;
+}
+#header div li{
+    liste-style:none;
+}
+#header div a{
+    float:right;
+    color: #3F003F;
+    margin: 20px;
+    font-size: 1.5em;
+    font-style:bold;
+    liste-style:none;
+}
+/*-------------------------------------
+                   HEADER
+--------------------------------------*/
+
+#dons{
+	
+	
+	font-size: 2em;
+	letter-spacing: 4px;
+	background: #400040;
+	color: #fff;
+	
+	 
+	padding: 10px;
+	text-align: center;
+	
+}
+#header form{
+	float: right;
+}
+
+/*--------------------------------------
+           CONTENU
+--------------------------------------*/
+
+#content{
+	margin-bottom: 20px;
+	
+    
+}
+#content article {
+	margin-bottom: 50px;
+	margin-top: 50px;
+	color: #533211;
+
+}
+#content article h1{
+	font-size: 2.2em;
+	margin-bottom: 20px;
+}
+#content article p{
+	font-size: 1.5em;
+	margin-bottom: 20px;
+}
+
+
+#content aside h1 a{
+	color: #533211;
+	font-size: 150%;
+	font-style: bold;
+}
+#content aside h1 a p{
+	background-color: rgba(255, 255, 255, 0.5);
+	position: relative;
+	top:68px;
+	
+}
+#content aside h1{
+	text-align: center;
+}
+#content aside h1 img{
+	width: 100%;
+}
+
+/*--------------------------------------
+           FOOTER
+--------------------------------------*/
+ #footer2 article img{
+   	display: none;
+   }
+
+#footer2{
+	background: #000000;
+	padding-top: 10px;
+	width: 100%;
+	padding-bottom: 10px;
+	/*position: absolute;
+	bottom: 0;
+	margin: 0;*/
+
+
+}
+#footer2 p{
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	word-spacing: 2px;
+	text-align: justify;
+}
+#footer2 a{
+	color: #fff;
+}
+#footer-solei p{
+   margin-top: 20px;
+}
+#logo-vae{
+   margin: 0;
+   padding: 0;
+   float: right;
+}
+/*----------------------------------
+           RESPONSIVE
+------------------------------------*/
+@media screen and (min-width: 421px) {
+  /* body {
+      background: url('../../images/chapeau.jpg')no-repeat;
+      background-size: 100%;
+
+   }*/
+   #footer2 article img{
+   	display: block;
+   }
+}
+
+#messageError{
+    
+    text-align:center;
+}

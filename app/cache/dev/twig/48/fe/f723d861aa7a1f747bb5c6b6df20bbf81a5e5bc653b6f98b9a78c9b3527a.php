@@ -70,20 +70,47 @@ class __TwigTemplate_48fef723d861aa7a1f747bb5c6b6df20bbf81a5e5bc653b6f98b9a78c9b
                         <p id=\"test\"><a href='";
             // line 17
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
-            echo "'>Deconnexion</a><p>
+            echo "'>
+                                ";
+            // line 18
+            if (((isset($context["langue"]) ? $context["langue"] : $this->getContext($context, "langue")) == "fr")) {
+                // line 19
+                echo "                                    Deconnexion
+                                ";
+            } else {
+                // line 21
+                echo "                                    Logout
+                                ";
+            }
+            // line 22
+            echo "  
+                            </a><p>
                     ";
         } else {
-            // line 19
+            // line 25
             echo "                        <p id=\"test\"><a href='";
             echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
-            echo "'>Inscription</a><p>
+            echo "'>
+                                ";
+            // line 26
+            if (((isset($context["langue"]) ? $context["langue"] : $this->getContext($context, "langue")) == "fr")) {
+                // line 27
+                echo "                                    Inscription
+                                ";
+            } else {
+                // line 29
+                echo "                                    register
+                                ";
+            }
+            // line 30
+            echo " </a><p>
                         <p id=\"test\"><a href='";
-            // line 20
+            // line 31
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "'>Connexion</a><p>
                     ";
         }
-        // line 22
+        // line 33
         echo "                </p>
  
             </li>
@@ -92,7 +119,7 @@ class __TwigTemplate_48fef723d861aa7a1f747bb5c6b6df20bbf81a5e5bc653b6f98b9a78c9b
 
 
    ";
-        // line 53
+        // line 64
         echo "
 
 ";
@@ -110,6 +137,6 @@ class __TwigTemplate_48fef723d861aa7a1f747bb5c6b6df20bbf81a5e5bc653b6f98b9a78c9b
 
     public function getDebugInfo()
     {
-        return array (  96 => 53,  87 => 22,  82 => 20,  72 => 17,  67 => 16,  55 => 11,  52 => 10,  46 => 9,  38 => 7,  30 => 5,  23 => 3,  19 => 1,  318 => 169,  313 => 92,  305 => 170,  303 => 169,  298 => 167,  283 => 155,  279 => 154,  267 => 144,  264 => 143,  261 => 142,  255 => 138,  252 => 137,  249 => 136,  247 => 135,  243 => 133,  240 => 132,  237 => 131,  232 => 128,  229 => 127,  226 => 126,  224 => 125,  196 => 100,  192 => 99,  184 => 93,  182 => 92,  166 => 79,  154 => 73,  145 => 70,  142 => 69,  136 => 67,  134 => 66,  126 => 60,  120 => 58,  114 => 56,  104 => 52,  73 => 24,  65 => 15,  60 => 18,  51 => 15,  45 => 13,  42 => 12,  36 => 10,  34 => 9,  27 => 4,  21 => 1,  167 => 53,  160 => 75,  157 => 49,  151 => 72,  148 => 46,  143 => 44,  138 => 43,  135 => 42,  130 => 40,  125 => 39,  122 => 38,  115 => 35,  112 => 55,  106 => 32,  103 => 31,  98 => 29,  93 => 28,  90 => 27,  85 => 25,  80 => 24,  77 => 19,  75 => 22,  68 => 17,  62 => 15,  59 => 12,  54 => 16,  49 => 11,  44 => 9,  39 => 8,  37 => 7,  31 => 3,  28 => 2,);
+        return array (  123 => 64,  114 => 33,  109 => 31,  106 => 30,  102 => 29,  98 => 27,  96 => 26,  91 => 25,  86 => 22,  82 => 21,  78 => 19,  76 => 18,  72 => 17,  67 => 16,  65 => 15,  59 => 12,  55 => 11,  52 => 10,  46 => 9,  38 => 7,  30 => 5,  27 => 4,  23 => 3,  19 => 1,);
     }
 }

@@ -1,11 +1,18 @@
 
-    <h1>Nos créations</h1>
+    <h1>
+        {% if langue == 'fr'%}
+            Nos créations :
+        {% else %}
+            Our creations :
+        {% endif %}
+    </h1>
+    <br/>
 
          {% for produit in produits %}
             {% if langue == 'fr'%}
-                <div class="col-md-3"><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}" width='200px' height='120'></a><p class="col-md-9">{{produit.nom}}</p></div>
+                <div class="col-md-4" id='product'><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}" width='200px' height='120'></a><p class="col-md-9">{{produit.nom}}</p></div>
              {% else %}
-                <div class="col-md-3"><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}" width='200px' height='120'></a><p class="col-md-9">{{produit.nomEn}}</p></div>
+                <div class="col-md-4" id='product'><a class="test" href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}" width='200px' height='120'></a><p class="col-md-9">{{produit.nomEn}}</p></div>
              {% endif %}
 
           {% endfor %}

@@ -18,7 +18,8 @@ class FormationController extends controller {
         
         if(!$rSite){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         
@@ -46,13 +47,15 @@ class FormationController extends controller {
         
         if(!$rRubrique){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         if(!$rsFormation){
             
             
-            return $this->render('VaeBaseBundle:Formation:aucune.html.twig');
+            return $this->render('VaeBaseBundle:Formation:aucune.html.twig',
+                array('langue' => $_locale));
         }
 
         
@@ -78,7 +81,8 @@ class FormationController extends controller {
         
         if(!$rSite){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         if($_locale == 'fr'){
@@ -102,7 +106,8 @@ class FormationController extends controller {
 
         if(!$rFormation){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         $User = $this->get('security.context')->getToken()->getUser();

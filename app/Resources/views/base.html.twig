@@ -76,7 +76,14 @@
         </figure>
         <article>
        
-         <a href="{{ path('vae_base_dons_dons',{'nomSite' : site.nom} )}}">Faire un Don</a> 
+         <a href="{{ path('vae_base_dons_dons',{'nomSite' : site.nom} )}}">
+             {% if langue == 'fr' %}
+              Faire un Don
+             {% else %}
+              Make a donation
+             {% endif %}
+         
+         </a> 
           
        </article>
 

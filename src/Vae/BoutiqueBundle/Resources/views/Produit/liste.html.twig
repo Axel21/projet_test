@@ -1,23 +1,26 @@
-<div class="container-fluid">
+<div class="container-fluid" id='venteProd'>
 <div class="row-fluid">
-<div class="col-md-9">
-    <h1>Création à vendre</h1>
+<div class="col-md-12">
+    <h1>
+        {% if langue == 'fr'%}
+            Créations à vendre :
+        {% else %}
+            Products for sale :
+        {% endif %} 
+    </h1>
     <div class="carousel slide" id="myCarousel">
         <div class="carousel-inner">
             <div class="item active">
                     <ul class="thumbnails">
                         {% for produit in produits %}
-                        <li class="col-md-3">
-                            <div class="thumbnail">
+                        <li class="col-md-4" id='product'>
                                 {% if langue == 'fr'%}
-                                  <p class="col-md-9">{{produit.nom}}</p>
-                                  <a href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}"><a>
+                                  <p class="col-md-9">{{produit.nom}} - {{produit.prix}}€</p>
+                                  <a href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slug, 'slugProduit' : produit.slug } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}" width='200px' height='120'><a>
                                  {% else %}
-                                  <p class="col-md-9">{{produit.nomEn}}</p>
-                                  <a href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}"></a>
-                                 {% endif %}
-                            </div>
-                            
+                                  <p class="col-md-9">{{produit.nomEn}} - {{produit.prix}}€</p>
+                                  <a href="{{ path('vae_boutique_detail',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugProduit' : produit.slugEn } )}}"><img src="{{ asset('uploads/images/'~produit.image) }}" width='200px' height='120'></a>
+                                 {% endif %}    
                         </li>
                         {% endfor %}
                     </ul>

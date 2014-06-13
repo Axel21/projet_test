@@ -1,5 +1,5 @@
-<p>Il n'y a pas de produits encodés</p>
-
-{#
-    rien a faire
-#}
+{% if langue == 'fr'%}
+<p>Il n'y a pas de produits</p>
+{% else %}
+<p>There are currently no products</p>
+{% endif %}

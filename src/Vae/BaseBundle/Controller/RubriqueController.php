@@ -19,7 +19,8 @@ class RubriqueController extends controller {
         
         if(!$rSite){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         if($_locale == 'fr'){
@@ -34,7 +35,8 @@ class RubriqueController extends controller {
         
         if(!$rRubrique){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
     

@@ -31,7 +31,11 @@
                     <p><a id="inscrip" href='{{ path('vae_inscription_formation',{'nomSite' : site.nom, 'slugRubrique' : rubrique.slugEn, 'slugFormation' : formation.slugEn } )}}'>inscription</a></p>
                 {% endif %}
             {% else %}
-                    <p id="inscrip">Deja inscrit à cette formation</p>
+                    {% if langue == 'fr' %}
+                        <p id="inscrip">Deja inscrit à cette formation</p>
+                    {% else %}
+                        <p id="inscrip"> Already register for this course </ p>
+                    {% endif %}
             {% endif %}
          {% endif %}
 </article>

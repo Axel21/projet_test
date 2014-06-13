@@ -383,3 +383,12 @@ header form option{
 	padding: 0;
 	float: none;
 }
+
+#venteProd{
+	clear:both;
+}
+
+#product{
+    
+    margin-bottom: 15px;
+}

@@ -18,7 +18,8 @@ class InscriptionController extends controller {
         
         if(!$rSite){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         if($_locale == 'fr'){
@@ -41,7 +42,8 @@ class InscriptionController extends controller {
         
         if(!$rFormation){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         $User = $this->get('security.context')->getToken()->getUser();

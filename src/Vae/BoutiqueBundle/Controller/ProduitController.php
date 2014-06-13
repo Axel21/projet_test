@@ -19,7 +19,8 @@ class ProduitController extends controller {
         
         if(!$rSite){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         
@@ -52,7 +53,8 @@ class ProduitController extends controller {
         
         if(!$rRubrique){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         
@@ -60,7 +62,8 @@ class ProduitController extends controller {
             
             //throw $this->createNotFoundException('This page does not exist.');
             
-            return $this->render('VaeBoutiqueBundle:Produit:aucun.html.twig');
+            return $this->render('VaeBoutiqueBundle:Produit:aucun.html.twig',
+                array('langue' => $_locale));
         }
         
         //on charge la vue et on lui envoi la liste des produits
@@ -81,7 +84,8 @@ class ProduitController extends controller {
         
         if(!$rSite){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         
@@ -114,7 +118,8 @@ class ProduitController extends controller {
         
         if(!$rRubrique){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         
@@ -143,7 +148,8 @@ class ProduitController extends controller {
         
         if(!$rSite){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         
@@ -167,14 +173,16 @@ class ProduitController extends controller {
         
         if(!$rRubrique){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         
         
         if(!$rProduit){
             
-            throw $this->createNotFoundException('This page does not exist.');
+            return $this->render('VaeBaseBundle:Erreurs:404.html.twig',
+               array('langue' => $_locale));
         }
         
         if($rProduit->getVendre() == 1){
@@ -208,7 +216,6 @@ class ProduitController extends controller {
             
                 'L_PAYMENTREQUEST_0_NAME0' => $nom,
                 'L_PAYMENTREQUEST_0_AMT0' => $prix,
-                'L_PAYMENTREQUEST_0_DESC0' => $description,
                
             );
         
@@ -221,10 +228,10 @@ class ProduitController extends controller {
         
             else{
             
-                /*var_dump($paypal->errors);
+               /* var_dump($paypal->errors);
                 die();*/
             
-                return $this->render('VaeBoutiqueBundle:Produit:error.html.twig');
+                return $this->render('VaeBoutiqueBundle:Produit:error3.html.twig');
             }
         
        
@@ -316,7 +323,6 @@ class ProduitController extends controller {
             
             'L_PAYMENTREQUEST_0_NAME0' => $nom,
             'L_PAYMENTREQUEST_0_AMT0' => $prix,
-            'L_PAYMENTREQUEST_0_DESC0' => $description,
             
         );
         
@@ -355,7 +361,7 @@ class ProduitController extends controller {
             
             /*var_dump($paypal->errors);
             die();*/
-            return $this->render('VaeBoutiqueBundle:Produit:error3.html.twig');
+            return $this->render('VaeBoutiqueBundle:Produit:error.html.twig');
         }
         
     }

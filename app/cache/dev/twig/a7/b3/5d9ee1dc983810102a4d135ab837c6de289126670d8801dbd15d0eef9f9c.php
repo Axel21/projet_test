@@ -164,7 +164,21 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
          <a href=\"";
         // line 79
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("vae_base_dons_dons", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))), "html", null, true);
-        echo "\">Faire un Don</a> 
+        echo "\">
+             ";
+        // line 80
+        if (((isset($context["langue"]) ? $context["langue"] : $this->getContext($context, "langue")) == "fr")) {
+            // line 81
+            echo "              Faire un Don
+             ";
+        } else {
+            // line 83
+            echo "              Make a donation
+             ";
+        }
+        // line 85
+        echo "         
+         </a> 
           
        </article>
 
@@ -178,9 +192,9 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
    <section id=\"left-content\" >
    <section class=\"col-md-9\">
             ";
-        // line 92
+        // line 99
         $this->displayBlock('content', $context, $blocks);
-        // line 93
+        // line 100
         echo "   </section>
 </section><!--end left-content-->
 
@@ -188,11 +202,11 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
         <section id=\"right-content\">
           <section class=\"col-md-3\">
             ";
-        // line 99
+        // line 106
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Agenda:liste", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
         echo "
             ";
-        // line 100
+        // line 107
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("VaeBaseBundle:Liens:listePartenaires", array("nomSite" => $this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom"))));
         echo "
           </section>
@@ -220,50 +234,50 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
       <section class=\"row\">
       <article class=\"col-md-5\">
         ";
-        // line 125
+        // line 132
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Alphabétisation")) {
-            // line 126
+            // line 133
             echo "        ";
         }
-        // line 127
+        // line 134
         echo "        ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "EFT")) {
-            // line 128
+            // line 135
             echo "            <h3>Vous voulez allez plus loin dans votre développement personnel ?</h3>
             <p>Contactez-moi, nous ferons un bout de chemin ensemble tout en sachant que mon objectif est de vous rendre autonome le plus rapidement possible. Les séances peuvent se tenir via Skype ce qui vous donne une grande liberté de mouvements.</p>
         ";
         }
-        // line 131
+        // line 138
         echo "        ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Céramique")) {
-            // line 132
+            // line 139
             echo "        ";
         }
-        // line 133
+        // line 140
         echo "      </article>
       <article class=\"col-md-7\">
           ";
-        // line 135
+        // line 142
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Alphabétisation")) {
-            // line 136
+            // line 143
             echo "          ";
         }
-        // line 137
+        // line 144
         echo "          ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "EFT")) {
-            // line 138
+            // line 145
             echo "            <h3>Avertissement</h3>
             <p>l’EFT est une modalité thérapeutique qui fait partie d’un nouveau type de traitements et protocoles faisant partie de ce qui est appelé La Psychologie Energétique. Même si c’est toujours considéré à un stade expérimental, ces techniques sont utilisées par des thérapeutes, des infirmières, des kinésithérapeutes, des psychiatres et des individus de par le monde.</p><p> Jusqu’à aujourd’hui, l’EFT et les autres Techniques de Psychologie Energétiques (TAT, Zensight,...) ont eu des résultats exceptionnels dans le traitement de problèmes psychologiques et physiques.Néanmoins ces techniques ne sont PAS sensées remplacer les traitements médicaux ou psychothérapeutiques. </p>
             <p>Personnellement, je n’ai pas expérimenté d’effets secondaires négatifs en appliquant ces techniques en suivant correctement les protocoles et les suggestions de traitement.Cela ne veut pas dire que vous ou vos clients ne vont pas expérimenter ou percevoir des effets secondaires négatifs. Si vous utilisez ces techniques pour vous ou pour d’autres, vous devez être d’accord d’être pleinement responsable de votre bien-être et vous êtes encouragés d’aviser vos clients à faire de même.</p><p>Si vous êtiez perturbé après une séance de psychologie énergétique, contactez un praticien expérimenté.</p>
           ";
         }
-        // line 142
+        // line 149
         echo "          ";
         if (($this->getAttribute((isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "nom") == "Céramique")) {
-            // line 143
+            // line 150
             echo "          ";
         }
-        // line 144
+        // line 151
         echo "
      </article>
      </section>
@@ -275,11 +289,11 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
        <section class=\"col-md-10 footer-center\" id='footer-center'>
           <section class=\"row\">
           <article class=\"col-md-3\"><a href=\"aveclesoleil.be\" id=\"footer-soleil\"><img src=\"";
-        // line 154
+        // line 161
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/images/logo-soleil-footer.png"), "html", null, true);
         echo "\"><p>Avec Le Soleil - asbl</p></a></article>
           <article class=\"col-md-3 col-md-offset-6\"><a href=\"#\" id=\"logo-vae\">Web site create by <img src=\"";
-        // line 155
+        // line 162
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/images/logo-vae.png"), "html", null, true);
         echo "\"></a></article>
           </section>  
@@ -294,14 +308,14 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
     <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>
   <!-- Include all compiled plugins (below), or include insectionidual files as needed -->
     <script src=\"";
-        // line 167
+        // line 174
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bootstrap/dist/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     
     ";
-        // line 169
+        // line 176
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 170
+        // line 177
         echo "    
 </body>
 </html>
@@ -309,12 +323,12 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
 ";
     }
 
-    // line 92
+    // line 99
     public function block_content($context, array $blocks = array())
     {
     }
 
-    // line 169
+    // line 176
     public function block_javascripts($context, array $blocks = array())
     {
         echo " ";
@@ -332,6 +346,6 @@ class __TwigTemplate_a7b35d9ee1dc983810102a4d135ab837c6de289126670d8801dbd15d0ee
 
     public function getDebugInfo()
     {
-        return array (  318 => 169,  313 => 92,  305 => 170,  303 => 169,  298 => 167,  283 => 155,  279 => 154,  267 => 144,  264 => 143,  261 => 142,  255 => 138,  252 => 137,  249 => 136,  247 => 135,  243 => 133,  240 => 132,  237 => 131,  232 => 128,  229 => 127,  226 => 126,  224 => 125,  196 => 100,  192 => 99,  184 => 93,  182 => 92,  166 => 79,  154 => 73,  145 => 70,  142 => 69,  136 => 67,  134 => 66,  126 => 60,  120 => 58,  114 => 56,  104 => 52,  73 => 24,  65 => 19,  60 => 18,  51 => 15,  45 => 13,  42 => 12,  36 => 10,  34 => 9,  27 => 5,  21 => 1,  167 => 53,  160 => 75,  157 => 49,  151 => 72,  148 => 46,  143 => 44,  138 => 43,  135 => 42,  130 => 40,  125 => 39,  122 => 38,  115 => 35,  112 => 55,  106 => 32,  103 => 31,  98 => 29,  93 => 28,  90 => 27,  85 => 25,  80 => 24,  77 => 23,  75 => 22,  68 => 17,  62 => 15,  59 => 14,  54 => 16,  49 => 11,  44 => 9,  39 => 8,  37 => 7,  31 => 3,  28 => 2,);
+        return array (  332 => 176,  327 => 99,  319 => 177,  317 => 176,  312 => 174,  297 => 162,  293 => 161,  281 => 151,  278 => 150,  275 => 149,  269 => 145,  266 => 144,  263 => 143,  261 => 142,  257 => 140,  254 => 139,  251 => 138,  246 => 135,  243 => 134,  240 => 133,  238 => 132,  210 => 107,  206 => 106,  198 => 100,  196 => 99,  180 => 85,  176 => 83,  172 => 81,  170 => 80,  166 => 79,  160 => 75,  154 => 73,  151 => 72,  145 => 70,  142 => 69,  136 => 67,  134 => 66,  126 => 60,  120 => 58,  114 => 56,  112 => 55,  104 => 52,  73 => 24,  65 => 19,  60 => 18,  54 => 16,  51 => 15,  45 => 13,  42 => 12,  36 => 10,  34 => 9,  27 => 5,  21 => 1,);
     }
 }

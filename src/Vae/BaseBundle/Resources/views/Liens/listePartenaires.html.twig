@@ -1,6 +1,10 @@
 
 <nav>
+    {% if langue == 'fr'%}
     <h2>Partenaires</h2>
+    {% else %}
+    <h2>Partners</h2>
+    {% endif %}
     <ul>
         {% for partenaire in partenaires %}
         <li><a href="http://{{partenaire.url}}">

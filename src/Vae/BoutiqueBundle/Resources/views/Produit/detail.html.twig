@@ -16,7 +16,13 @@
             {% if produit.disponible == '1'%}
                 <a href='{{paypal}}'><input type="image" src="http://www.paypal.com/fr_FR/i/btn/x-click-but01.gif" border="0" name="submit" alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée"></a>
             {% else %}
-                <p>ce produit n'est plus disponible</p>
+                    
+                 {% if langue == 'fr' %}
+                    <p id="inscrip">Ce produit n'est plus disponible</p>
+                 {% else %}
+                    <p id="inscrip">This product is no longer available</p>
+                 {% endif %}
+                    
             {% endif %}
             <br/><br/>
 

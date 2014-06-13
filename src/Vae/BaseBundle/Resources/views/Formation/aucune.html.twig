@@ -1,4 +1,5 @@
-<p>Il n'y a pas des formations ou d'ateliers encodées</p>
-{#
-   rien a faire
-#}
+{%if langue == 'fr'%}
+    <p>Il n'y a pas de formations ou d'ateliers</p>
+{% else %}
+    <p>There are no Trainings or workshops</p>
+{% endif %}

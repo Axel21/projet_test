@@ -14,9 +14,20 @@
                 <p>  
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <p id="test"><a href='{{ path('fos_user_profile_show')}}'>Profile</a><p>
-                        <p id="test"><a href='{{ path('fos_user_security_logout')}}'>Deconnexion</a><p>
+                        <p id="test"><a href='{{ path('fos_user_security_logout')}}'>
+                                {% if langue == 'fr'%}
+                                    Deconnexion
+                                {% else %}
+                                    Logout
+                                {% endif %}  
+                            </a><p>
                     {% else %}
-                        <p id="test"><a href='{{ path('fos_user_registration_register')}}'>Inscription</a><p>
+                        <p id="test"><a href='{{ path('fos_user_registration_register')}}'>
+                                {% if langue == 'fr'%}
+                                    Inscription
+                                {% else %}
+                                    register
+                                {% endif %} </a><p>
                         <p id="test"><a href='{{ path('fos_user_security_login')}}'>Connexion</a><p>
                     {% endif %}
                 </p>

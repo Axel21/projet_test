@@ -4,8 +4,13 @@
     </form>#}
 
             <article>
+              {% if langue == 'fr'%}
               <p>Pour nous contactez, remplisez le formulaire si dessous<br/>
-                où téléphonez nous au 0495/187608</p>
+                ou téléphonez nous au 0495/187608</p>
+              {% else %}
+              <p>To contact us, fill the form below<br/>
+                or call us at 0495/187608 </p>
+              {% endif %}
                  <form role="form" action="{{path('vae_base_formation_contact_send', {'nomSite': site.nom, 'slugRubrique': rubrique.nom})}}" method="post">
                  <div class="form-group">
                    <label for="nom">Votre nom</label>
